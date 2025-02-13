@@ -1,0 +1,152 @@
+/* ************************slider*********************** */
+
+.mainSlider .swiper-horizontal > .swiper-pagination-bullets,
+.mainSlider .swiper-pagination-bullets.swiper-pagination-horizontal,
+.mainSlider .swiper-pagination-custom,
+.mainSlider .swiper-pagination-fraction {
+  bottom: 7%;
+}
+
+.mainSlider .swiper-button-next:after,
+.mainSlider .swiper-button-prev:after {
+  font-size: 30px;
+  background-color: red;
+}
+.mainSlider .swiper-button-next:after,
+.mainSlider .swiper-button-prev:after {
+  display: none;
+}
+.mainSlider .swiper-button-next,
+.mainSlider .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 30px 0;
+  transition: 0.4s;
+  color: white;
+}
+.mainSlider .swiper-button-prev {
+  left: 130px;
+  cursor: pointer;
+}
+.mainSlider .swiper-button-next {
+  right: 130px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 900px) {
+  .mainSlider > .swiper-button-prev {
+    left: 10px;
+  }
+  .mainSlider > .swiper-button-next {
+    right: 10px;
+  }
+}
+
+.Listing .custom-dot {
+  display: inline-block;
+  width: 28px;
+  height: 10px;
+  background-color: transparent;
+  color: #000;
+  margin: 10px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.Listing .dash::before {
+  content: "";
+  position: absolute;
+  height: 2.5px;
+  width: 28px;
+  background-color: white;
+}
+.Listing .swiper-pagination-bullet-active .dash::before {
+  background: black;
+}
+.Listing .swiper-button-next:after,
+.Listing .swiper-button-prev:after {
+  display: none;
+}
+.Listing .ListingSlider-prev,
+.Listing .ListingSlider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: white;
+  padding: 12px 16px;
+  transition: 0.4s;
+  color: black;
+  border: none;
+}
+.Listing .swiper-horizontal > .swiper-pagination-bullets,
+.Listing .swiper-pagination-bullets.swiper-pagination-horizontal,
+.Listing .swiper-pagination-custom,
+.Listing .swiper-pagination-fraction {
+  bottom: 5%;
+  left: -5%;
+}
+
+.handpicked .swiper-horizontal > .swiper-pagination-bullets,
+.handpicked .swiper-pagination-bullets.swiper-pagination-horizontal,
+.handpicked .swiper-pagination-custom,
+.handpicked .swiper-pagination-fraction {
+  bottom: -10px;
+}
+.product-container {
+  position: relative;
+}
+
+.navigation-button {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+
+.product-container:hover .best-seller-button,
+.product-container:hover .navigation-button {
+  visibility: visible;
+  opacity: 1;
+}
+
+.best-seller-button {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 55px;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+
+
+.navigation-button {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.navigation-button.ListingSlider-prev {
+  left: 10px;
+  cursor: pointer;
+}
+
+.navigation-button.ListingSlider-next {
+  right: 10px;
+  cursor: pointer;
+}
+.radioBtn:checked{
+  background-color: blue;
+}

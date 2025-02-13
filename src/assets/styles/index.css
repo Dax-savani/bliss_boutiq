@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+img {
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.lato {
+  font-family: "Lato", sans-serif !important;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========slider================= */
+.dash::before {
+  content: "";
+  position: absolute;
+  height: 2.5px;
+  width: 28px;
+  background-color: white;
+}
+.handpicked .dash::before {
+  background-color: black;
+}
+.swiper-pagination-bullet-active .dash::before,
+.swiper-pagination-bullet-active .dash::before {
+  background: black;
+}
+
+.Listing .custom-dot,
+.List .custom-dot,
+.handpicked .custom-dot,
+.mainSlider .custom-dot {
+  display: inline-block;
+  width: 28px;
+  height: 10px;
+  background-color: transparent;
+  color: #000;
+  margin: 10px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* ===============handpicked && category === slider============= */
+@media only screen and (max-width: 600px) {
+  .handpicked .custom-dot {
+    display: none;
+  }
+}
+.handpicked .swiper-button-next:after,
+.handpicked .swiper-button-prev:after,
+.category2 .swiper-button-next:after,
+.category2 .swiper-button-prev:after {
+  display: none;
+}
+.handpicked .handpicked-next {
+  position: absolute;
+  z-index: 2;
+  right: -18px;
+  top: 36%;
+  cursor: pointer;
+}
+.handpicked .handpicked-prev {
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  left: -18px;
+  top: 36%;
+}
+.category2 .category2-next {
+  position: absolute;
+  cursor: pointer;
+  top: 32px;
+  right: 0;
+}
+.category2 .category2-prev {
+  cursor: pointer;
+  position: absolute;
+  top: 32px;
+  left: unset;
+  right: 70px;
+}
+.handpicked .handpicked-next.swiper-button-disabled,
+.handpicked .handpicked-prev.swiper-button-disabled,
+.category2 .category2-next.swiper-button-disabled,
+.category2 .category2-prev.swiper-button-disabled {
+  display: none;
+}
+@media only screen and (max-width: 550px) {
+  .handpicked .handpicked-prev,
+  .handpicked .handpicked-next {
+    display: none;
+  }
+  .category2 .category2-next {
+    top: 100px;
+    right: 0;
+  }
+  .category2 .category2-prev {
+    top: 100px;
+    left: unset;
+    right: 70px;
+  }
+}
+
+/* ================singleproduct================== */
+.css-1p5qn3q-MuiButtonBase-root-MuiAccordionSummary-root,
+.css-1btxjyt-MuiButtonBase-root-MuiAccordionSummary-root {
+  padding: 0px !important;
+}
+.fs-11 {
+  font-size: 11px;
+}
+.fs-12 {
+  font-size: 12px;
+}
+.fs-13 {
+  font-size: 13px;
+}
+.fs-14 {
+  font-size: 14px;
+}
+.css-hyum1k-MuiToolbar-root {
+  padding: 0 !important;
+}
+.css-1hcvhb1-MuiCollapse-root {
+  width: unset !important;
+}
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 7px 0px 0px !important;
+}
+
+/* ==================login================== */
+
+/* ============== profile tabs ============= */
+.css-1aquho2-MuiTabs-indicator {
+  background-color: unset !important;
+}
+/* ==================login==================== */
+.css-1wc848c-MuiFormHelperText-root {
+  color: red !important;
+  margin: 10px 0px !important;
+}
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root,
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  border-radius: 0px !important;
+}
+
+/* ===================== product according ========================= */
+
+#accordingProduct .css-1086bdv-MuiPaper-root-MuiAccordion-root {
+  border-radius: unset !important;
+  border-bottom: 1px solid #cccccc !important;
+  box-shadow: unset;
+}
+
+.css-eqpfi5-MuiAccordionSummary-content.Mui-expanded {
+  margin: 0px 0px !important;
+}
+.css-yu7sx-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: 0px !important;
+}
+.css-yu7sx-MuiButtonBase-root-MuiAccordionSummary-root {
+  padding: 0px 0px !important;
+}
+
+/*  */
