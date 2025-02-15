@@ -1,4 +1,4 @@
-import {useTheme} from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import {
     Box,
     Button,
@@ -11,8 +11,8 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../Instance";
 import paymentimg1 from "../../assets/images/cart/amex.svg";
 import paymentimg2 from "../../assets/images/cart/paypal.svg";
@@ -30,10 +30,14 @@ const CartPage = () => {
     const [loading, setLoading] = useState(true);
     const [itemId, setItemId] = useState('');
     const [editItem, setEditItem] = useState({});
+    const token = localStorage.getItem("token");
 
     const fetchCartItems = async () => {
         try {
-            const response = await axiosInstance.get("/api/cart");
+            const response = await axiosInstance.get("/api/cart", {
+                headers: { " token": `Bearer ${token}` },
+            });
+
             setCartItems(response.data || []);
         } catch (error) {
             console.error("Error fetching cart items:", error);
@@ -48,7 +52,9 @@ const CartPage = () => {
 
     const handleRemove = async (itemId) => {
         try {
-            await axiosInstance.delete(`/api/cart/${itemId}`);
+            await axiosInstance.delete(`/api/cart/${itemId}`, {
+                headers: { "token": `Bearer ${token}` },
+            });
             setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
         } catch (error) {
             console.error("Error removing item:", error);
@@ -156,7 +162,7 @@ const CartPage = () => {
                 return;
             }
 
-            await axiosInstance.put(`/api/cart / ${editItem._id}`, {
+            await axiosInstance.put(`/api/cart/${editItem._id}`, {
                 product_id: editItem.product_id,
                 qty: editItem.qty,
                 color_id: editItem.color_id,
@@ -164,7 +170,7 @@ const CartPage = () => {
             });
             setCartItems((prevItems) =>
                 prevItems.map((cartItem) =>
-                    cartItem._id === editItem._id ? {...cartItem, ...editItem} : cartItem
+                    cartItem._id === editItem._id ? { ...cartItem, ...editItem } : cartItem
                 )
             );
             setItemId("");
@@ -183,8 +189,6 @@ const CartPage = () => {
             if (user.address_details) {
                 setUserAddress(user.address_details);
             }
-
-            console.log("User Data:", user);
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
@@ -199,7 +203,7 @@ const CartPage = () => {
     }, [cartItems]);
 
     if (loading) {
-        return <Loader/>;
+        return <Loader />;
     }
 
     const loadRazorpay = () => {
@@ -241,7 +245,7 @@ const CartPage = () => {
                     totalAmount,
                 },
                 {
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json', 'token': `Bearer ${token}` }
                 }
             );
             console.log('order', order);
@@ -271,14 +275,14 @@ const CartPage = () => {
                         const validateResponse = await axiosInstance.post(
                             '/api/order/razorpay-validate',
                             payload,
-                            { headers: { 'Content-Type': 'application/json' } }
+                            { headers: { 'Content-Type': 'application/json', 'token': `Bearer ${token}` } }
                         );
 
                         console.log('jsonResponse', validateResponse.data);
                     } catch (error) {
                         console.error("Validation failed:", error.response?.data || error.message);
                     }
-                },           
+                },
                 prefill: {
                     name: "Web Coder",
                     email: "webcoder@example.com",
@@ -307,7 +311,7 @@ const CartPage = () => {
     return (
         <Box bgcolor={theme.palette.liteGrayBack}>
             <Container maxWidth="">
-                <Box sx={{margin: "32px 0px 20px", padding: "0px 0px 0px 16px"}}>
+                <Box sx={{ margin: "32px 0px 20px", padding: "0px 0px 0px 16px" }}>
                     <Typography
                         variant="h2"
                         className="lato"
@@ -323,8 +327,8 @@ const CartPage = () => {
                 </Box>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={7}>
-                        <Box sx={{backgroundColor: "white"}} px={2}>
-                            <Box sx={{margin: "0px 0px 20px 0px", padding: "20px 0px"}}>
+                        <Box sx={{ backgroundColor: "white" }} px={2}>
+                            <Box sx={{ margin: "0px 0px 20px 0px", padding: "20px 0px" }}>
                                 <Button
                                     sx={{
                                         textTransform: "unset",
@@ -355,10 +359,10 @@ const CartPage = () => {
                                 );
 
                                 return (
-                                    <Box sx={{display: "flex", justifyContent: "space-between"}}>
-                                        <Box key={item._id} display={{xs: "block", sm: "flex"}}
-                                             sx={{paddingBottom: "20px", marginBottom: "20px"}}>
-                                            <Box sx={{height: "260px", width: "195px", margin: "0px 20px 0px 0px"}}>
+                                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                                        <Box key={item._id} display={{ xs: "block", sm: "flex" }}
+                                            sx={{ paddingBottom: "20px", marginBottom: "20px" }}>
+                                            <Box sx={{ height: "260px", width: "195px", margin: "0px 20px 0px 0px" }}>
                                                 {itemId === item._id ? (
                                                     item.product_id.color_options.find((colorOption) => colorOption.color === editItem.color)
                                                         ?.product_images?.length > 0 ? (
@@ -396,7 +400,7 @@ const CartPage = () => {
                                                 )}
                                             </Box>
 
-                                            <Box pt={{xs: 2, sm: 0}}>
+                                            <Box pt={{ xs: 2, sm: 0 }}>
                                                 <Typography sx={{
                                                     fontSize: "15px",
                                                     marginBottom: "4px",
@@ -432,7 +436,7 @@ const CartPage = () => {
 
                                                 {itemId === item._id ? (
                                                     <Box mt={2}>
-                                                        <FormControl sx={{width: "250px"}}>
+                                                        <FormControl sx={{ width: "250px" }}>
                                                             <InputLabel>Color</InputLabel>
                                                             <Select
                                                                 value={editItem.color || ""}
@@ -441,14 +445,14 @@ const CartPage = () => {
                                                             >
                                                                 {item.product_id.color_options.map((colorOption) => (
                                                                     <MenuItem key={colorOption._id}
-                                                                              value={colorOption.color}>
+                                                                        value={colorOption.color}>
                                                                         {colorOption.color}
                                                                     </MenuItem>
                                                                 ))}
                                                             </Select>
                                                         </FormControl>
 
-                                                        <FormControl sx={{width: "250px", ml: 2}}>
+                                                        <FormControl sx={{ width: "250px", ml: 2 }}>
                                                             <InputLabel>Size</InputLabel>
                                                             <Select
                                                                 value={editItem.size || ""}
@@ -460,7 +464,7 @@ const CartPage = () => {
                                                                     .find((colorOption) => colorOption.color === editItem.color)
                                                                     ?.size_options.map((sizeOption) => (
                                                                         <MenuItem key={sizeOption.size}
-                                                                                  value={sizeOption.size}>
+                                                                            value={sizeOption.size}>
                                                                             {sizeOption.size}
                                                                         </MenuItem>
                                                                     ))}
@@ -521,7 +525,7 @@ const CartPage = () => {
                                                     </Box>
                                                 ) : (
                                                     <Box>
-                                                        <Box mt={2} sx={{fontSize: "14px", color: "#666666"}}>
+                                                        <Box mt={2} sx={{ fontSize: "14px", color: "#666666" }}>
                                                             <Typography>Colour: {colorOption?.color || "Unknown"}</Typography>
                                                             <Typography>Size: {item.size}</Typography>
                                                             <Box display="flex" alignItems="center">
@@ -554,8 +558,8 @@ const CartPage = () => {
                                             </Box>
                                         </Box>
                                         <Box>
-                                            <IconButton sx={{color: "gray"}} onClick={() => handleEdit(item)}>
-                                                <EditIcon/>
+                                            <IconButton sx={{ color: "gray" }} onClick={() => handleEdit(item)}>
+                                                <EditIcon />
                                             </IconButton>
                                         </Box>
                                     </Box>
@@ -564,8 +568,8 @@ const CartPage = () => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} md={5} sx={{padding: "16px 0px"}}>
-                        <Box sx={{backgroundColor: "white"}} px={2}>
+                    <Grid item xs={12} md={5} sx={{ padding: "16px 0px" }}>
+                        <Box sx={{ backgroundColor: "white" }} px={2}>
                             <Box pt={2}>
                                 <Typography
                                     pb={2}
@@ -580,7 +584,7 @@ const CartPage = () => {
                             </Box>
                             <Box display={"flex"} justifyContent={"space-between"} py={2}>
                                 <Typography
-                                    sx={{color: theme.palette.lightBlack, fontSize: "18px"}}
+                                    sx={{ color: theme.palette.lightBlack, fontSize: "18px" }}
                                 >
                                     Subtotal
                                 </Typography>
@@ -588,7 +592,7 @@ const CartPage = () => {
                             </Box>
                             <Box display={"flex"} justifyContent={"space-between"} pt={0}>
                                 <Typography
-                                    sx={{color: theme.palette.lightBlack, fontSize: "18px"}}
+                                    sx={{ color: theme.palette.lightBlack, fontSize: "18px" }}
                                 >
                                     Standard delivery
                                 </Typography>
@@ -600,14 +604,14 @@ const CartPage = () => {
                             <Box>
                                 <Typography
                                     pb={2}
-                                    sx={{color: theme.palette.lightBlack, fontSize: "12px"}}
+                                    sx={{ color: theme.palette.lightBlack, fontSize: "12px" }}
                                 >
                                     within 5 - 6 working days
                                 </Typography>
                             </Box>
-                            <Box pb={2} sx={{borderBottom: "1px solid #E4E4E4"}}>
+                            <Box pb={2} sx={{ borderBottom: "1px solid #E4E4E4" }}>
                                 <Box pb={1}>
-                                    <Typography sx={{fontSize: "18px"}}>
+                                    <Typography sx={{ fontSize: "18px" }}>
                                         Got a promotion code?
                                     </Typography>
                                 </Box>
@@ -656,7 +660,7 @@ const CartPage = () => {
                             </Box>
                             <Box display={"flex"} justifyContent={"space-between"} py={2}>
                                 <Typography
-                                    sx={{color: theme.palette.lightBlack, fontSize: "16px"}}
+                                    sx={{ color: theme.palette.lightBlack, fontSize: "16px" }}
                                 >
                                     Total (1 Item) inc. VAT
                                 </Typography>
@@ -685,12 +689,12 @@ const CartPage = () => {
                                     Proceed To Checkout
                                 </Button>
                             </Box>
-                            <Box sx={{padding: "20px"}}>
-                                <Grid container spacing={2} sx={{marginBottom: "20px"}}>
+                            <Box sx={{ padding: "20px" }}>
+                                <Grid container spacing={2} sx={{ marginBottom: "20px" }}>
                                     <Grid
                                         item
                                         xs={12}
-                                        sx={{display: "flex", alignItems: "center"}}
+                                        sx={{ display: "flex", alignItems: "center" }}
                                     >
                                         <Typography>
                                             Free delivery on all orders over ₹75
@@ -699,7 +703,7 @@ const CartPage = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        sx={{display: "flex", alignItems: "center"}}
+                                        sx={{ display: "flex", alignItems: "center" }}
                                     >
                                         <Typography>
                                             60-day free returns. For returns, a fee of 4,95 EUR
@@ -707,11 +711,11 @@ const CartPage = () => {
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Divider sx={{marginBottom: "10px"}}/>
-                                <Typography variant="body2" sx={{marginBottom: "10px"}}>
+                                <Divider sx={{ marginBottom: "10px" }} />
+                                <Typography variant="body2" sx={{ marginBottom: "10px" }}>
                                     Accepted Payment Methods
                                 </Typography>
-                                <Box sx={{display: "flex"}}>
+                                <Box sx={{ display: "flex" }}>
                                     <img
                                         src={paymentimg1}
                                         alt="American Express"

@@ -217,10 +217,10 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                             keepMounted: true,
                                         }}
                                         sx={{
-                                            display: {xs: "block", xl: "none"},
+                                            display: {xs: "block", md: "none"},
                                             "& .MuiDrawer-paper": {
                                                 boxSizing: "border-box",
-                                                width: {xs: drawerWidth, sm: drawerWidth2},
+                                                width: {xs: drawerWidth, md: drawerWidth2},
                                             },
                                         }}
                                     >
@@ -229,7 +229,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                 </nav>
                                 <Box
                                     sx={{
-                                        display: {xs: "none", xl: "flex"},
+                                        display: {xs: "none", md: "flex"},
                                         alignItems: "center",
                                     }}
                                 >
@@ -422,7 +422,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                 <Box
                                     sx={{
                                         flexGrow: 0,
-                                        display: {xs: "block", xl: "none"},
+                                        display: {xs: "block", md: "none"},
                                     }}
                                 >
                                     <IconButton

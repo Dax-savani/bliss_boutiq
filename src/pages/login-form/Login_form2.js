@@ -77,7 +77,7 @@ const Login_form2 = () => {
               );
               break;
             case 500:
-              toast.error("User not found.");
+              toast.error("Invalid credentials");
               break;
             default:
               toast.error("An unknown error occurred. Please try again.");

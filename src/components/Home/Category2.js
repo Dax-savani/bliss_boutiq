@@ -89,25 +89,24 @@ const Category2 = () => {
                                                 <Box
                                                     sx={{
                                                         position: "relative",
-                                                        height: {sm: "585px", xs: "auto"},
+                                                        height: {sm: "585px", xs: "auto"},width:'100%'
                                                     }}
                                                 >
                                                     <img
                                                         src={item.image}
                                                         alt=""
-                                                        style={{height: "100% !important"}}
+                                                        style={{width:'100%',height: "100% !important"}}
                                                     />
-                                                    <Box
+                                                    {/* <Box
                                                         sx={{
                                                             position: "absolute",
-                                                            bottom: {sm: "0px", xs: "4px`ddd"},
+                                                            bottom: {sm: "0px", xs: "4px"},
                                                             left: 0,
                                                             right: 0,
                                                             height: "50%",
-                                                            background:
-                                                                "linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))",
+                                                            background:"linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))",
                                                         }}
-                                                    ></Box>
+                                                    ></Box> */}
                                                 </Box>
                                                 <Box
                                                     sx={{
@@ -168,8 +167,7 @@ const Category2 = () => {
                                         border: "none",
                                     }}
                                 >
-                                    <i
-                                        className="fa-solid fa-arrow-right-long"
+                                    <i className="fa-solid fa-arrow-right-long"
                                         style={{
                                             fontSize: "20px",
                                             color: theme.palette.common.white,
