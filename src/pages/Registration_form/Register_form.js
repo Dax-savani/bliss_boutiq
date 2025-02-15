@@ -48,7 +48,7 @@ const RegisterForm = () => {
                 .required("Email is required"),
             password: Yup.string()
                 .matches(
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/,
+                    /^(?=.*[a-z]).{8,}$/,
                     "Password must include at least 8 characters, an uppercase letter, and a special character"
                 )
                 .required("Password is required"),
