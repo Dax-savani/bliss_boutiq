@@ -39,7 +39,7 @@ const Category2 = () => {
 
     return (
         <>
-            <Box sx={{mt: "70px"}}>
+            <Box sx={{my: "70px"}}>
                 <Container maxWidth="xl">
                     <Box sx={{position: "relative"}}>
                         <Box
@@ -53,7 +53,7 @@ const Category2 = () => {
                         >
                             CELEBRATE IN STYLE
                         </Box>
-                        <Box className="category2" mb={5}>
+                        <Box className="category2">
                             <Grid container>
                                 <Swiper
                                     navigation={{
@@ -89,24 +89,25 @@ const Category2 = () => {
                                                 <Box
                                                     sx={{
                                                         position: "relative",
-                                                        height: {sm: "585px", xs: "auto"},width:'100%'
+                                                        height: {sm: "585px", xs: "auto"},
                                                     }}
                                                 >
                                                     <img
                                                         src={item.image}
                                                         alt=""
-                                                        style={{width:'100%',height: "100% !important"}}
+                                                        style={{height: "100% !important"}}
                                                     />
-                                                    {/* <Box
+                                                    <Box
                                                         sx={{
                                                             position: "absolute",
-                                                            bottom: {sm: "0px", xs: "4px"},
+                                                            bottom: {sm: "0px", xs: "4px`ddd"},
                                                             left: 0,
                                                             right: 0,
                                                             height: "50%",
-                                                            background:"linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))",
+                                                            background:
+                                                                "linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))",
                                                         }}
-                                                    ></Box> */}
+                                                    ></Box>
                                                 </Box>
                                                 <Box
                                                     sx={{
@@ -167,7 +168,8 @@ const Category2 = () => {
                                         border: "none",
                                     }}
                                 >
-                                    <i className="fa-solid fa-arrow-right-long"
+                                    <i
+                                        className="fa-solid fa-arrow-right-long"
                                         style={{
                                             fontSize: "20px",
                                             color: theme.palette.common.white,

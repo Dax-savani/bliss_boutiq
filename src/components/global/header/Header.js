@@ -284,7 +284,6 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                                     left: "50%",
                                                     transform: "translateX(-50%)",
                                                     width: "100%",
-                                                    borderRadius: "8px",
                                                     color: "black",
                                                     p: "0px 10px 25px",
                                                     visibility: openSubMenu === index ? "visible" : "hidden", // Toggle visibility based on state
@@ -292,7 +291,8 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                                     display: "flex",
                                                     justifyContent: "start",
                                                     textWrap: "wrap",
-                                                    height: "100vh",
+                                                    // height: "100vh",
+                                                    boxShadow: "0px 10px 10px rgba(0, 0, 0, 0.3)",
                                                 }}
                                             >
                                                 {item.subMenu}

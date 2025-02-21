@@ -8,7 +8,6 @@ const Offer = () => {
     <>
       <Box mt={"100px"}>
         <Container maxWidth="xl">
-          {" "}
           <Grid container>
             <Grid item xs={12}>
               <Box
@@ -19,7 +18,7 @@ const Offer = () => {
                   justifyContent: "right",
                   cursor: "pointer",
                 }}
-                onClick={() => navigate("/profile")}
+                onClick={() => navigate("/my-account")}
               >
                 <ChevronLeftIcon />
                 <Box>Back</Box>

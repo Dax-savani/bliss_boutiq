@@ -322,7 +322,7 @@ function SingleProduct() {
                                 </Box>
                                 <Box>
                                     <Grid container spacing={1}>
-                                        {productData &&
+                                    {productData &&
                                             productData?.color_options?.map((option, index) => (
                                                 <Grid item xs={6} sm={4} md={3} key={index}>
                                                     <Box
@@ -393,7 +393,7 @@ function SingleProduct() {
                                                             : "1px solid #cccccc",
                                                     display: "inline-flex",
                                                     flexWrap: "wrap",
-                                                    padding: {md: "20px 25px", xs: "15px"},
+                                                    padding: {md: "20px 30px", xs: "15px"},
                                                     margin: "0px 10px 10px 0px",
                                                     fontSize: "13px",
                                                     fontWeight: "600",
