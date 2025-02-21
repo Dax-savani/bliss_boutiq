@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
     Grid,
     Card,
@@ -7,7 +7,7 @@ import {
     IconButton,
     Button,
 } from "@mui/material";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../Instance";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -15,12 +15,12 @@ import Favorite from "@mui/icons-material/Favorite";
 import Loader from "../../Loader";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const label = {inputProps: {"aria-label": "Checkbox demo"}};
-const ProductListing = ({onAddToWishlist, selectedCategory}) => {
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
+const ProductListing = ({ onAddToWishlist, selectedCategory }) => {
     const navigate = useNavigate();
 
-    const {categoryId} = useParams();
-    const {subcategoryId} = useParams();
+    const { categoryId } = useParams();
+    const { subcategoryId } = useParams();
 
     const path = useLocation()
 
@@ -59,7 +59,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
 
     const handleOpen = (event, productId) => {
         event.stopPropagation();
-        setAnchorEl({element: event.currentTarget, productId});
+        setAnchorEl({ element: event.currentTarget, productId });
     };
 
     const handleClose = (event) => {
@@ -93,7 +93,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
     const handleFavoriteClick = async (product) => {
         setLoading(true);
         try {
-            const payload = {product_id: product._id};
+            const payload = { product_id: product._id };
             const token = localStorage.getItem("token");
 
             if (product.isWishlisted) {
@@ -130,7 +130,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
     };
 
     if (loading) {
-        <Loader/>
+        <Loader />
     }
 
     // Handle size selection
@@ -139,10 +139,10 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
     };
 
     return (
-        <Box sx={{mt: "50px", px: {xs: "0px", md: "30px"}}}>
+        <Box sx={{ mt: "50px", px: { xs: "0px", md: "30px" } }}>
             <div>
                 {products.length > 0 ? (
-                    <Grid container spacing={{xs: 0.2, sm: 2, md: 3}}>
+                    <Grid container spacing={{ xs: 0.2, sm: 2, md: 3 }}>
                         {products &&
                             products.map((product) => {
                                 const selectedColor = colorSelections[product._id] || product.color_options?.[0]?.color;
@@ -188,7 +188,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                 <Box
                                                     sx={{
                                                         width: "100%",
-                                                        height: {lg: "580px", sm: "580px", xs: "257px"},
+                                                        height: { lg: "580px", sm: "580px", xs: "257px" },
                                                         position: "relative",
                                                         "&:hover .hover-img": {
                                                             opacity: 1,
@@ -245,7 +245,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                                 left: 0,
                                                                 width: "100%",
                                                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
-                                                                padding: {xs: "8px", sm: "10px", md: "15px"},
+                                                                padding: { xs: "8px", sm: "10px", md: "15px" },
                                                                 textAlign: "start",
                                                                 opacity: 0,
                                                                 transform: "translateY(20px)",
@@ -256,74 +256,52 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                             <Typography
                                                                 variant="body2"
                                                                 sx={{
-                                                                    mb: {xs: 1, sm: 1.5},
-                                                                    fontSize: {
-                                                                        xs: "8px",
-                                                                        sm: "12px",
-                                                                        md: "14px",
-                                                                    },
+                                                                    mb: { xs: 1, sm: 1.5 },
+                                                                    fontSize: { xs: "8px", sm: "12px", md: "14px", },
                                                                     mx: 1,
                                                                 }}
                                                             >
                                                                 <strong>Quick Shop</strong> (Select Your Size)
                                                             </Typography>
-                                                            <Grid
-                                                                container
-                                                                spacing={{xs: 1, sm: 2}}
-                                                                justifyContent="start"
-                                                                alignItems="center"
+                                                            <Box
+                                                                sx={{
+                                                                    display: "flex",
+                                                                    flexWrap: "wrap",
+                                                                    gap: "8px",
+                                                                    margin: "10px 0",
+                                                                }}
                                                             >
-                                                                <Grid container spacing={2}>
-                                                                    {product.color_options
-                                                                        ?.find((colorOption) => colorOption.color === selectedColor)
-                                                                        ?.size_options?.map((option) => (
-                                                                            <Grid
-                                                                                item
-                                                                                xs={3}
-                                                                                sm={2.3}
-                                                                                md={3}
-                                                                                lg={2.3}
-                                                                                key={`${selectedColor}-${option.size}`}
-                                                                            >
-                                                                                <Box
-                                                                                    onClick={() => handleSizeSelect(option.size)}
-                                                                                    sx={{
-                                                                                        padding: {
-                                                                                            xs: "8px",
-                                                                                            sm: "10px",
-                                                                                            md: "35px"
-                                                                                        },
-                                                                                        // padding: { xs: "8px", sm: "10px", md: "15px" },
-                                                                                        width: "100%",
-                                                                                        height: {
-                                                                                            xs: "30px",
-                                                                                            sm: "35px",
-                                                                                            md: "40px",
-                                                                                        },
-                                                                                        display: "flex",
-                                                                                        alignItems: "center",
-                                                                                        justifyContent: "center",
-                                                                                        cursor: "pointer",
-                                                                                        fontSize: {
-                                                                                            xs: "12px",
-                                                                                            sm: "14px",
-                                                                                            md: "14px",
-                                                                                        },
-                                                                                        fontWeight: "500",
-                                                                                        // backgroundColor:
-                                                                                        //   selectedSize === option.size ? "#dcdcdc" : "transparent",
-                                                                                        "&:hover": {
-                                                                                            textDecorationLine: "underline",
-                                                                                            fontWeight: "800",
-                                                                                        }
-                                                                                    }}
-                                                                                >
-                                                                                    {option.size}
-                                                                                </Box>
-                                                                            </Grid>
-                                                                        ))}
-                                                                </Grid>
-                                                            </Grid>
+                                                                {product.color_options
+                                                                    ?.find((colorOption) => colorOption.color === selectedColor)
+                                                                    ?.size_options?.map((option) => (
+                                                                        <Box
+                                                                            onClick={() => handleSizeSelect(option.size)}
+                                                                            key={`${selectedColor}-${option.size}`}
+                                                                            sx={{
+                                                                                width: "auto",
+                                                                                minWidth: "auto",
+                                                                                maxWidth: "90px",
+                                                                                height: { xs: "20px", sm: "40px" },
+                                                                                display: "flex",
+                                                                                alignItems: "center",
+                                                                                justifyContent: "center",
+                                                                                cursor: "pointer",
+                                                                                fontSize: "14px",
+                                                                                fontWeight: "500",
+                                                                                padding: { xs: "2px 2px", sm: "6px 12px" },
+                                                                                fontSize: { xs: "8px", sm: "12px", md: "14px" },
+                                                                                transition: "background-color 0.3s ease",
+                                                                                "&:hover": {
+                                                                                    textDecoration: 'underline',
+                                                                                    fontWeight: '700',
+                                                                                }
+
+                                                                            }}
+                                                                        >
+                                                                            {option.size}
+                                                                        </Box>
+                                                                    ))}
+                                                            </Box>
                                                         </Box>
                                                     )}
                                                 </Box>
@@ -331,8 +309,8 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                     onClick={() => handleFavoriteClick(product)}
                                                     sx={{
                                                         position: "absolute",
-                                                        top: {xs: "5px", sm: "15px"},
-                                                        right: {xs: "10px", sm: "15px"},
+                                                        top: { xs: "5px", sm: "15px" },
+                                                        right: { xs: "10px", sm: "15px" },
                                                         background:
                                                             isClicked === product._id ? "black" : "white",
                                                         border: "1px solid #eee",
@@ -351,16 +329,16 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
 
                                                     {
                                                         loadingProductId === product._id ? (
-                                                            <CircularProgress sx={{color: "black", padding: "0"}}
-                                                                              size="20px"/>
+                                                            <CircularProgress sx={{ color: "black", padding: "0" }}
+                                                                size="20px" />
                                                         ) : (
                                                             <Checkbox
                                                                 {...label}
-                                                                icon={<FavoriteBorder/>}
-                                                                checkedIcon={<Favorite sx={{color: "#000"}}/>}
+                                                                icon={<FavoriteBorder />}
+                                                                checkedIcon={<Favorite sx={{ color: "#000" }} />}
                                                                 checked={
                                                                     localStorage.getItem("token") &&
-                                                                    product.isWishlisted
+                                                                        product.isWishlisted
                                                                         ? true
                                                                         : false
                                                                 }
@@ -374,12 +352,12 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                         variant="body2"
                                                         sx={{
                                                             position: "absolute",
-                                                            top: {xs: "4px", sm: "15px"},
-                                                            left: {xs: "0px", sm: "-12px"},
+                                                            top: { xs: "4px", sm: "15px" },
+                                                            left: { xs: "0px", sm: "-12px" },
                                                             background: "black",
                                                             color: "white",
-                                                            padding: {xs: "4px 12px", sm: "2px 24px"},
-                                                            fontSize: {xs: "8px", sm: "12px", md: "14px"},
+                                                            padding: { xs: "4px 12px", sm: "2px 24px" },
+                                                            fontSize: { xs: "8px", sm: "12px", md: "14px" },
                                                             whiteSpace: "nowrap",
                                                         }}
                                                     >
@@ -390,8 +368,8 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                             <Box
                                                 sx={{
                                                     padding: "10px 15px 10px 0",
-                                                    mt: {xs: 1, sm: 0},
-                                                    ml: {xs: 1, sm: 0},
+                                                    mt: { xs: 1, sm: 0 },
+                                                    ml: { xs: 1, sm: 0 },
                                                 }}
                                             >
                                                 <Typography
@@ -399,7 +377,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                     sx={{
                                                         color: "black",
                                                         mb: 1,
-                                                        fontSize: {xs: "12px", sm: "14px"},
+                                                        fontSize: { xs: "12px", sm: "14px" },
                                                         fontWeight: "600",
                                                         whiteSpace: "nowrap",
                                                         overflow: "hidden",
@@ -411,7 +389,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                 </Typography>
                                                 <Box
                                                     sx={{
-                                                        display: {xs: "block", sm: "flex"},
+                                                        display: { xs: "block", sm: "flex" },
                                                         alignItems: "center",
                                                         gap: 1,
                                                     }}
@@ -421,7 +399,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                         sx={{
                                                             textDecoration: "line-through",
                                                             color: "#000",
-                                                            fontSize: {xs: "14px", sm: "16px"},
+                                                            fontSize: { xs: "14px", sm: "16px" },
                                                             fontWeight: "600",
                                                         }}
                                                     >
@@ -433,7 +411,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                         variant="body2"
                                                         sx={{
                                                             color: "#b51f29",
-                                                            fontSize: {xs: "16px", sm: "18px"},
+                                                            fontSize: { xs: "16px", sm: "18px" },
                                                             fontWeight: "600",
                                                         }}
                                                     >
@@ -492,7 +470,7 @@ const ProductListing = ({onAddToWishlist, selectedCategory}) => {
                                                         >
                                                             <Typography
                                                                 variant="body1"
-                                                                sx={{p: "10px 0 20px 0"}}
+                                                                sx={{ p: "10px 0 20px 0" }}
                                                             >
                                                                 Color:{" "}
                                                                 <strong>

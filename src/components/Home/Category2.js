@@ -53,7 +53,7 @@ const Category2 = () => {
                         >
                             CELEBRATE IN STYLE
                         </Box>
-                        <Box className="category2">
+                        <Box className="category2" mb={5}>
                             <Grid container>
                                 <Swiper
                                     navigation={{

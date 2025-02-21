@@ -353,8 +353,8 @@ function SingleProduct() {
                                                         }}>
                                                             <img src={option.product_images[0]}
                                                                  alt={`Product color: ${option.color}`} style={{
-                                                                width: "100%",
-                                                                height: "100%",
+                                                                maxWidth: "100%",
+                                                                maxHeight: "100%",
                                                                 objectFit: "contain",
                                                             }}/>
                                                         </Box>
@@ -393,7 +393,7 @@ function SingleProduct() {
                                                             : "1px solid #cccccc",
                                                     display: "inline-flex",
                                                     flexWrap: "wrap",
-                                                    padding: {md: "20px 30px", xs: "15px"},
+                                                    padding: {md: "20px 25px", xs: "15px"},
                                                     margin: "0px 10px 10px 0px",
                                                     fontSize: "13px",
                                                     fontWeight: "600",

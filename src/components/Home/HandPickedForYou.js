@@ -26,9 +26,7 @@ const HandPickedForYou = () => {
 
             for (let category of categories) {
                 try {
-                    const response = await axiosInstance.get(
-                        `/api/product?gender=${category}`
-                    );
+                    const response = await axiosInstance.get(`/api/product?gender=${category}`);
                     if (response.data.data.length > 0) {
                         productData[category] = response.data.data;
                         filteredCategories.push(category);
@@ -40,7 +38,7 @@ const HandPickedForYou = () => {
 
             setProducts(productData);
             setAvailableCategories(filteredCategories);
-            setSelectedCategory(filteredCategories[0] || ""); // Set first available category
+            setSelectedCategory(filteredCategories[0] || "");
             setLoader(false);
         };
 
@@ -130,7 +128,7 @@ const HandPickedForYou = () => {
                                                 1220: {slidesPerView: 5},
                                             }}
                                         >
-                                            {products[selectedCategory].map((product, index) => (
+                                            {products[selectedCategory].slice(0, 5).map((product, index) => (
                                                 <SwiperSlide key={index}>
                                                     <Box
                                                         sx={{
