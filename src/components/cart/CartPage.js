@@ -609,7 +609,7 @@ const CartPage = () => {
                                     within 5 - 6 working days
                                 </Typography>
                             </Box>
-                            <Box pb={2} sx={{ borderBottom: "1px solid #E4E4E4" }}>
+                            {/* <Box pb={2}>
                                 <Box pb={1}>
                                     <Typography sx={{ fontSize: "18px" }}>
                                         Got a promotion code?
@@ -657,8 +657,8 @@ const CartPage = () => {
                                         promotions or promotion codes
                                     </Typography>
                                 </Box>
-                            </Box>
-                            <Box display={"flex"} justifyContent={"space-between"} py={2}>
+                            </Box> */}
+                            <Box display={"flex"} justifyContent={"space-between"} py={2} sx={{ borderTop: "1px solid #E4E4E4" }}>
                                 <Typography
                                     sx={{ color: theme.palette.lightBlack, fontSize: "16px" }}
                                 >

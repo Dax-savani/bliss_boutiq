@@ -469,17 +469,19 @@ const MyData = () => {
             description: "Save your favorite items",
         },
         {
-            name: "OFFERS AND PROMOCODES",
-            icon: <CardGiftcardOutlinedIcon />,
-            description: "Join our loyalty program to receive discounts",
-            onclk: offer,
-        },
-        {
             name: "LOG OUT",
             icon: <LogoutIcon />,
             onclk: handleLogout,
         },
     ];
+
+    {/* {
+            name: "OFFERS AND PROMOCODES",
+            icon: <CardGiftcardOutlinedIcon />,
+            description: "Join our loyalty program to receive discounts",
+            onclk: offer,
+        }, */}
+
     const [rightSide, setRightSide] = useState(myData);
     const [header, setHeader] = useState({
         name: "MY DATA",
@@ -493,169 +495,6 @@ const MyData = () => {
 
     return (
         <>
-            {/* <Box pt={"130px"}>
-        <Box bgcolor={theme.palette.liteGrayBack}>
-          <Container maxWidth="xl">
-            <Grid container>
-              <Grid item xs={12}>
-                <Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: { xs: "column", sm: "unset" },
-                      py: { xs: "30px", sm: "unset" },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        height: "170px",
-                        width: "170px",
-                        borderRadius: "50%",
-                        backgroundColor: "white",
-                        outline: "6px solid white",
-                        transition: ".4s",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        boxShadow:
-                          "0 2px 4px 0 rgba(0, 0, 0, .2), 0 5px 13px 0 rgba(0, 0, 0, .19)",
-                        "&:hover": { backgroundColor: "#CCCCCC" },
-                        fontSize: "90px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          "& > .MuiSvgIcon-root": {
-                            fontSize: "70px !important",
-                          },
-                        }}
-                      >
-                        {header.icon}
-                      </Box>
-                    </Box>
-                    <Box
-                      sx={{
-                        marginLeft: { sm: "80px" },
-                        mt: { xs: "20px", sm: "unset" },
-                      }}
-                    >
-                      <Box
-                        className="lato"
-                        sx={{
-                          fontWeight: "900",
-                          width: "100%",
-                          fontSize: { xs: "30px", sm: "40px" },
-                        }}
-                      >
-                        {header.name}
-                      </Box>
-                      <Box
-                        sx={{
-                          color: theme.palette.black,
-                          mt: "10px",
-                          width: "250px",
-                        }}
-                      >
-                        {header.description}
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-
-        <Box mt="30px">
-          <Container maxWidth="xl">
-            <Grid container>
-              <Grid
-                item
-                lg={4}
-                xs={12}
-                sx={{
-                  mb: { md: "50px", lg: "unset" },
-                  height: "350px",
-                }}
-              >
-                <Grid container height={"100%"}>
-                  <Grid item xs={12} md={6} lg={12} width={"100%"}>
-                    {leftSide.map((item, index) => (
-                      <Box
-                        key={index}
-                        {...(item.name === "OVERVIEW"
-                          ? { onClick: () => navigate("/profile") }
-                          : {
-                              onClick: () => {
-                                setRightSide(item.onclk);
-                                setHeader(item);
-                              },
-                            })}
-                        sx={{
-                          color: theme.palette.black,
-                          fontSize: "17px",
-                          fontWeight: "600",
-                          borderBottom: "1px solid #CCCCCC",
-                          marginRight: { lg: "50px", sm: "20px" },
-                          padding: "11px 10px",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          cursor: "pointer",
-                          transition: ".3s",
-                          "&:hover": {
-                            backgroundColor: "#CCCCCC",
-                          },
-                        }}
-                        className="lato"
-                      >
-                        <Box>{item.name}</Box>
-                        <Box>{item.icon}</Box>
-                      </Box>
-                    ))}
-                  </Grid>
-
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    lg={0}
-                    sx={{
-                      display: { lg: "none", md: "unset", xs: "none" },
-                      height: "100%",
-                      width: "100%",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        height: "100%",
-                        backgroundColor: theme.palette.black,
-                        color: theme.palette.textLightGray,
-                        padding: "35px 30px",
-                      }}
-                    >
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Iure error pariatur possimus similique quo eligendi
-                      ratione quam cumque tempore suscipit nam ducimus
-                      doloremque voluptas sint obcaecati, eum, excepturi facere
-                      alias ea. Quis, vel in officiis esse, eum culpa cum illum
-                      doloremque molestiae nam eaque ratione! Nemo esse repellat
-                      commodi reprehenderit.
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid item lg={8} xs={12}>
-                {rightSide}
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </Box> */}
-
             <Box pt={"130px"}>
                 <Box bgcolor={theme.palette.liteGrayBack}>
                     <Container maxWidth="xl">

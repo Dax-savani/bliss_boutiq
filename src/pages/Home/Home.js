@@ -15,7 +15,6 @@ import restrending2 from "../../assets/images/Home/resTrending/restrending2.png"
 import trending3 from "../../assets/images/Home/trendingHeroSection/trending3.png";
 import restrending3 from "../../assets/images/Home/resTrending/restrending3.png";
 import Hero from "../../components/Home/Hero";
-import Subscribe from "../../components/Home/Subscribe";
 
 const Home = () => {
 
@@ -62,7 +61,7 @@ const Home = () => {
         align={"right"}
         textColor={"black"}
       /> */}
-      <Subscribe />
+      {/* <Subscribe /> */}
 
     </>
   );

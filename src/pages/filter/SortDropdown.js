@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Menu, MenuItem, Typography } from '@mui/material';
 import SortIcon from '@mui/icons-material/Sort';
+import axiosInstance from '../../Instance';
+import { useNavigate } from 'react-router-dom';
 
 const SortDropdown = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState('Sort');
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axiosInstance.get('/api/product');
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, [selectedOption]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -16,16 +32,14 @@ const SortDropdown = () => {
   };
 
   const handleMenuItemClick = (option) => {
-    setSelectedOption(option); // Update the button text
+    setSelectedOption(option.label);
     handleClose();
-  };
+  };  
 
   const options = [
-    'Sort',
-    'Most Popular',
-    'Newest',
-    'Price (low-high)',
-    'Price (high-low)',
+    { label: 'Newest', value: 'newest' },
+    { label: 'Price (low-high)', value: 'price-low-high' },
+    { label: 'Price (high-low)', value: 'price-high-low' },
   ];
 
   return (
@@ -66,19 +80,23 @@ const SortDropdown = () => {
       >
         {options.map((option, index) => (
           <MenuItem
-            key={index}
-            onClick={() => handleMenuItemClick(option)}
-            sx={{
-              py: 1,
-              fontSize: '16px',
-              fontWeight: 'bold',
-              color: selectedOption === option ? '#fff' : 'black',
-              bgcolor: selectedOption === option ? '#000' : 'transparent',
-              '&:hover': { backgroundColor: '#000', color: '#fff' },
-            }}
-          >
-            {option}
-          </MenuItem>
+          key={index}
+          onClick={() => {
+            handleMenuItemClick(option);
+            navigate(`/product?sort=${option.value}`);
+          }}
+          sx={{
+            py: 1,
+            fontSize: '16px',
+            fontWeight: 'bold',
+            color: selectedOption === option.label ? '#fff' : 'black',
+            bgcolor: selectedOption === option.label ? '#000' : 'transparent',
+            '&:hover': { backgroundColor: '#000', color: '#fff' },
+          }}
+        >
+          {option.label}
+        </MenuItem>
+        
         ))}
       </Menu>
     </div>

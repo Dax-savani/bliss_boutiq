@@ -44,10 +44,10 @@ const Form = () => {
             label="REGISTER"
             sx={{ color: "#000 !important", fontSize: "12px" }}
           />
-          <Tab
+          {/* <Tab
             label="ACTIVATE"
             sx={{ color: "#000 !important", fontSize: "12px" }}
-          />
+          /> */}
         </Tabs>
         <Box
           sx={{
@@ -64,11 +64,11 @@ const Form = () => {
               <Register_form />
             </>
           )}
-          {activeTab === 2 && (
+          {/* {activeTab === 2 && (
             <>
               <ActivateForm />
             </>
-          )}
+          )} */}
         </Box>
       </Container>
     </Box>

@@ -30,13 +30,6 @@ const Category2 = () => {
             });
     }, []);
 
-    // const handleCategoryClick = (categoryId) => {
-    //   onCategorySelect(categoryId);
-    //   navigate("/product")
-    //   console.log("ooooooooooo",categoryId);
-
-    // };
-
     return (
         <>
             <Box sx={{my: "70px"}}>
@@ -80,7 +73,8 @@ const Category2 = () => {
                                         },
                                     }}
                                 >
-                                    {products && products.map((item) => (
+                                    {/* {products && products.map((item) => ( */}
+                                    {products && [...products].sort(() => 0.5 - Math.random()).map((item) => (
                                         <SwiperSlide key={item}>
                                             <Box
                                                 sx={{position: "relative", cursor: "pointer"}}
@@ -129,16 +123,6 @@ const Category2 = () => {
                                                     >
                                                         {item.name}
                                                     </Box>
-                                                    {/* <Box
-                            sx={{
-                              color: theme.palette.common.white,
-                              fontSize: "14px",
-                              lineHeight: "1.6",
-                              letterSpacing: "0.8px",
-                            }}
-                          >
-                            {item.description}
-                          </Box> */}
                                                 </Box>
                                             </Box>
                                         </SwiperSlide>

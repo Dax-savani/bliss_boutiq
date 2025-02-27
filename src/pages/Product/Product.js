@@ -130,7 +130,7 @@ const ProductPage = () => {
     }, []);
 
     const path = useLocation();
-    const gender = new URLSearchParams(path.search).get("gender") || "default";
+    const gender = new URLSearchParams(path.search).get("gender") || "";
     const heroImage = gender === "male" ? imgMen : gender === "female" ? imgWomen : imgMen;
 
     return (

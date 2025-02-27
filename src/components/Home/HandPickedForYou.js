@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {Box, CircularProgress, Container, Typography, useTheme} from "@mui/material";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
+import React, { useEffect, useState } from "react";
+import { Box, CircularProgress, Container, Typography, useTheme } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../Instance";
+import Loader from "../../Loader";
 
 const HandPickedForYou = () => {
     const theme = useTheme();
@@ -49,13 +50,13 @@ const HandPickedForYou = () => {
 
     return (
         <>
-            <Box sx={{mt: "70px", height: {md: "670px", xs: "480px"}}}>
+            <Box sx={{ mt: "70px", height: { md: "670px", xs: "480px" } }}>
                 <Container maxWidth="xl">
                     <Box className="handpicked">
                         <Box
                             sx={{
-                                fontSize: {xs: "35px", md: "44px"},
-                                my: {sm: "40px", xs: "30px"},
+                                fontSize: { xs: "35px", md: "44px" },
+                                my: { sm: "40px", xs: "30px" },
                                 textAlign: "center",
                             }}
                             fontWeight={"800"}
@@ -98,20 +99,12 @@ const HandPickedForYou = () => {
                         )}
 
                         {loader ? (
-                            <Box sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                my: 4,
-                                alignItems: "center",
-                                height: "430px"
-                            }}>
-                                <CircularProgress sx={{color: "black"}}/>
-                            </Box>
+                            <Loader />
                         ) : (
                             selectedCategory &&
                             products[selectedCategory] && (
                                 <Box mt={"30px"}>
-                                    <Box sx={{position: "relative"}}>
+                                    <Box sx={{ position: "relative" }}>
                                         <Swiper
                                             navigation={{
                                                 nextEl: `.handpicked-next`,
@@ -122,15 +115,16 @@ const HandPickedForYou = () => {
                                             modules={[Navigation, Pagination]}
                                             className="mySwiper"
                                             loop={false}
-                                            pagination={{clickable: true}}
+                                            pagination={{ clickable: true }}
                                             breakpoints={{
-                                                0: {slidesPerView: 2},
-                                                810: {slidesPerView: 3},
-                                                1100: {slidesPerView: 4},
-                                                1220: {slidesPerView: 5},
+                                                0: { slidesPerView: 2 },
+                                                810: { slidesPerView: 3 },
+                                                1100: { slidesPerView: 4 },
+                                                1220: { slidesPerView: 5 },
                                             }}
                                         >
-                                            {products[selectedCategory].slice(0, 5).map((product, index) => (
+                                            {/* {products[selectedCategory].slice(0, 5).map((product, index) => ( */}
+                                            {[...products[selectedCategory]].sort(() => 0.5 - Math.random()).slice(0, 5).map((product, index) => (
                                                 <SwiperSlide key={index}>
                                                     <Box
                                                         sx={{
@@ -151,7 +145,7 @@ const HandPickedForYou = () => {
                                                         <Box
                                                             sx={{
                                                                 position: "relative",
-                                                                height: {xs: "255px", sm: "420px"},
+                                                                height: { xs: "255px", sm: "420px" },
                                                                 overflow: "hidden",
                                                             }}
                                                         >
@@ -173,7 +167,7 @@ const HandPickedForYou = () => {
                                                         >
                                                             {product.title}
                                                         </Box>
-                                                        <Box sx={{fontWeight: "500"}}>
+                                                        <Box sx={{ fontWeight: "500" }}>
                                                             ₹ {product?.color_options[0].price.discounted_price}
                                                         </Box>
                                                     </Box>

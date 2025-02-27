@@ -147,7 +147,7 @@ const TrendingHeroSection = ({
                   },
                 }}
               >
-                <span>for him</span>
+                <span>for her</span>
                 <ArrowForwardIcon className="arrow-icon" />
               </Button>
             </Box>

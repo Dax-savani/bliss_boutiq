@@ -34,12 +34,12 @@ const Profile = () => {
             description: "Save your favorite items",
             navigate: "my-wishilist",
         },
-        {
-            icon: <CardGiftcardOutlinedIcon sx={{fontSize: "90px"}}/>,
-            title: "OFFERS AND PROMOCODES",
-            description: "Join our loyalty program to receive discounts",
-            navigate: "offer",
-        },
+        // {
+        //     icon: <CardGiftcardOutlinedIcon sx={{fontSize: "90px"}}/>,
+        //     title: "OFFERS AND PROMOCODES",
+        //     description: "Join our loyalty program to receive discounts",
+        //     navigate: "offer",
+        // },
     ];
 
     const fetchUserData = async () => {
@@ -147,7 +147,7 @@ const Profile = () => {
                                             item
                                             xs={12}
                                             sm={6}
-                                            md={3}
+                                            md={4}
                                             onClick={() => navigate(`/${data.navigate}`)}
                                             sx={{
                                                 display: "flex",

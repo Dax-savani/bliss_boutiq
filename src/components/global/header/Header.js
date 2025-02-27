@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     AppBar,
     Box,
@@ -17,9 +17,9 @@ import logo from "../../../assets/images/header/Asset 2@4x.png";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) => {
+const Header = ({ fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5 }) => {
     const drawerWidth = 300;
     const drawerWidth2 = 370;
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,15 +31,15 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
     };
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-    const openSearch = () => setIsSearchOpen(true);
+    // const openSearch = () => setIsSearchOpen(true);
     const closeSearch = () => setIsSearchOpen(false);
 
     const menuItems = [
-        {label: "New In", to: "/", subMenu: fullMegamenu2},
+        { label: "New In", to: "/", subMenu: fullMegamenu2 },
         // { label: "All", to: "/product"},
-        {label: "Men ", to: "/product?&&gender=male", subMenu: fullMegamenu3},
-        {label: "Women", to: "/product?&&gender=female", subMenu: fullMegamenu4},
-        {label: "Kids", to: "/product?&&gender=kids", subMenu: fullMegamenu5,},
+        { label: "Men ", to: "/product?&&gender=male", subMenu: fullMegamenu3 },
+        { label: "Women", to: "/product?&&gender=female", subMenu: fullMegamenu4 },
+        { label: "Kids", to: "/product?&&gender=kids", subMenu: fullMegamenu5, },
         // { label: "Discover", to: "/", subMenu: fullMegamenu6 },
     ];
 
@@ -65,9 +65,9 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
     };
 
     // Handle item click to close the submenu
-    const handleItemClick = () => {
-        setOpenSubMenu(null); // Close the submenu when an item is clicked
-    };
+    // const handleItemClick = () => {
+    //     setOpenSubMenu(null); // Close the submenu when an item is clicked
+    // };
 
 
     const drawer = (
@@ -80,16 +80,16 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                 }}
             >
                 <Box>
-                    <CloseIcon onClick={handleDrawerToggle}/>
+                    <CloseIcon onClick={handleDrawerToggle} />
                 </Box>
             </Typography>
             <List>
                 {menuItems.map((item, index) => (
                     <ListItem key={index} disablePadding>
                         <ListItemButton>
-                            <Box sx={{width: "100%"}}>
+                            <Box sx={{ width: "100%" }}>
                                 <NavLink
-                                    style={{color: "unset"}}
+                                    style={{ color: "unset" }}
                                     onClick={
                                         item.subMenu === null
                                             ? () => setMobileMenuOpen(!mobileMenuOpen)
@@ -109,9 +109,9 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                             },
                                         }}
                                     >
-                                        <Box sx={{fontWeight: "500"}}>{item.label}</Box>
+                                        <Box sx={{ fontWeight: "500" }}>{item.label}</Box>
                                         <Box>
-                                            {item.subMenu === null ? "" : <KeyboardArrowDownIcon/>}
+                                            {item.subMenu === null ? "" : <KeyboardArrowDownIcon />}
                                         </Box>
                                     </Box>
                                 </NavLink>
@@ -162,7 +162,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                 }}
             >
                 <Toolbar>
-                    <Box sx={{width: "100%", px: "30px"}}>
+                    <Box sx={{ width: "100%", px: "30px" }}>
                         <Box
                             sx={{
                                 display: "flex",
@@ -175,26 +175,26 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    height: {xs: "77.5px"},
-                                    width: {md: "186px", xs: "120px"},
+                                    height: { xs: "77.5px" },
+                                    width: { md: "186px", xs: "120px" },
                                     cursor: "pointer",
                                     py: "10px",
                                 }}
                                 onClick={() => navigate("/")}
                             >
-                                <img src={logo} alt="Logo" style={{objectFit: "contain"}}/>
+                                <img src={logo} alt="Logo" style={{ objectFit: "contain" }} />
                             </Box>
                             <Box
                                 sx={{
                                     display: "flex",
                                     alignItems: "center",
-                                    width: {xs: "100%", sm: "auto"},
+                                    width: { xs: "100%", sm: "auto" },
                                 }}
                             >
                                 <Box
                                     sx={{
                                         display: "flex",
-                                        justifyContent: {xs: "space-between", sm: "unset"},
+                                        justifyContent: { xs: "space-between", sm: "unset" },
                                         width: "100%",
                                     }}
                                 >
@@ -217,10 +217,10 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                             keepMounted: true,
                                         }}
                                         sx={{
-                                            display: {xs: "block", md: "none"},
+                                            display: { xs: "block", md: "none" },
                                             "& .MuiDrawer-paper": {
                                                 boxSizing: "border-box",
-                                                width: {xs: drawerWidth, md: drawerWidth2},
+                                                width: { xs: drawerWidth, md: drawerWidth2 },
                                             },
                                         }}
                                     >
@@ -229,7 +229,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                 </nav>
                                 <Box
                                     sx={{
-                                        display: {xs: "none", md: "flex"},
+                                        display: { xs: "none", md: "flex" },
                                         alignItems: "center",
                                     }}
                                 >
@@ -270,7 +270,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                         >
                                             <NavLink
                                                 className="lato"
-                                                style={{color: "unset"}}
+                                                style={{ color: "unset" }}
                                             >
                                                 {item.label}
                                             </NavLink>
@@ -304,7 +304,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                             <Box
                                 sx={{
                                     color: "black",
-                                    display: {xs: "flex"},
+                                    display: { xs: "flex" },
                                     alignItems: "center",
                                     fontWeight: "600",
                                     letterSpacing: "-0.7px",
@@ -315,7 +315,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                     onClick={() => navigate("/contact")}
                                     sx={{
                                         padding: "10px",
-                                        display: {xs: "none", xl: "block"},
+                                        display: { xs: "none", md: "block" },
                                         transition: "0.4s",
                                         borderRadius: "15px",
                                         cursor: "pointer",
@@ -326,12 +326,12 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                 >
                                     Support
                                 </Box>
-                                <Box
+                                {/* <Box
                                     className="lato"
                                     sx={{
                                         padding: "10px",
                                         transition: "0.4s",
-                                        display: {xs: "none", xl: "block"},
+                                        display: {xs: "none", md: "block"},
                                         borderRadius: "15px",
                                         textWrap: "nowrap",
                                         cursor: "pointer",
@@ -341,17 +341,17 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                     }}
                                 >
                                     For Business
-                                </Box>
+                                </Box> */}
                                 <Box
                                     sx={{
                                         display: "flex",
-                                        marginInline: {xl: "30px", xs: "10px"},
+                                        marginInline: { md: "30px", xs: "10px" },
                                     }}
                                 >
                                     {/* Search Icon */}
-                                    <Box sx={{fontSize: "22px", cursor: "pointer"}} onClick={openSearch}>
-                                        <SearchIcon/>
-                                    </Box>
+                                    {/* <Box sx={{ fontSize: "22px", cursor: "pointer" }} onClick={openSearch}>
+                                        <SearchIcon />
+                                    </Box> */}
 
                                     {/* Full Page Search */}
                                     {isSearchOpen && (
@@ -395,9 +395,9 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                                 />
                                                 <IconButton
                                                     onClick={closeSearch}
-                                                    sx={{color: "#fff", fontSize: "24px", marginLeft: "10px"}}
+                                                    sx={{ color: "#fff", fontSize: "24px", marginLeft: "10px" }}
                                                 >
-                                                    <CloseIcon/>
+                                                    <CloseIcon />
                                                 </IconButton>
                                             </Box>
                                         </Box>
@@ -413,7 +413,7 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                         <i className="fa-solid fa-cart-shopping"></i>
                                     </Box>
                                     <Box
-                                        sx={{fontSize: "22px", cursor: "pointer"}}
+                                        sx={{ fontSize: "22px", cursor: "pointer" }}
                                         onClick={handleClick}
                                     >
                                         <i className="fa-regular fa-user"></i>
@@ -422,16 +422,16 @@ const Header = ({fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5}) =>
                                 <Box
                                     sx={{
                                         flexGrow: 0,
-                                        display: {xs: "block", md: "none"},
+                                        display: { xs: "block", md: "none" },
                                     }}
                                 >
                                     <IconButton
                                         size="large"
                                         aria-label="menu"
                                         onClick={handleDrawerToggle}
-                                        sx={{color: "black", fontSize: "3px"}}
+                                        sx={{ color: "black", fontSize: "3px" }}
                                     >
-                                        <MenuIcon/>
+                                        <MenuIcon />
                                     </IconButton>
                                 </Box>
                             </Box>

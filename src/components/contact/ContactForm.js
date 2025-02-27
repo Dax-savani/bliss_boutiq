@@ -321,7 +321,7 @@ const ContactForm = () => {
                           },
                         }}
                       >
-                        SUBMIT{" "}
+                        SUBMIT
                       </Button>
                     </Grid>
                   </Grid>

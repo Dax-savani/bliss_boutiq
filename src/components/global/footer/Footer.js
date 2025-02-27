@@ -1,10 +1,12 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { NavLink } from "react-router-dom";
+import logo from '../../../assets/images/header/blacklogo.png'
+
 const Footer = () => {
 
   const footer1 = [
@@ -12,11 +14,11 @@ const Footer = () => {
     { lable: "Men", to: "/product?&&gender=male" },
     { lable: "Women", to: "/product?&&gender=female" },
     { lable: "Kids", to: "/product?&&gender=kids" },
-    { lable: "Shoes & Accessories", to: "/product?&&gender=shoes" },
-    { lable: "Underwear", to: "/product?&&gender=underwear" },
-    { lable: "Pre-owned", to: "/" },
-    { lable: "Sale", to: "/" },
-    { lable: "About Bliss Boutiq", to: "/" },
+    // { lable: "Shoes & Accessories", to: "/product?&&gender=shoes" },
+    // { lable: "Underwear", to: "/product?&&gender=underwear" },
+    // { lable: "Pre-owned", to: "/" },
+    // { lable: "Sale", to: "/" },
+    // { lable: "About Bliss Boutiq", to: "/" },
   ];
 
   const footer2 = [
@@ -27,14 +29,6 @@ const Footer = () => {
 
   const footer3 = [{ lable: "Contact", to: "/contact" }];
 
-  const footer4 = [
-    { lable: "Careers", to: "/" },
-    { lable: "Legal", to: "/" },
-    { lable: "Privacy", to: "/" },
-    { lable: "Report to Society", to: "/" },
-    { lable: "Fighting Counterfeits", to: "/" },
-    { lable: "Financial Results", to: "/" },
-  ];
   return (
     <>
       <Box
@@ -56,10 +50,25 @@ const Footer = () => {
                   textAlign: "center",
                   fontSize: "35px",
                   fontWeight: "600",
-                  pb: "100px",
+                  pb: "60px",
                 }}
               >
                 BLISS BOUTIQ
+              </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xs={12}
+                sx={{
+                  my: { xs: "30px", lg: "0px" },
+                  justifyContent: { sm: "center" },
+                  display: "flex",
+                }}
+              >
+                <Box sx={{ width: '100px', height: '100px', overflow: 'hidden' }}>
+                  <Typography component={'img'} src={logo} sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                </Box>
               </Grid>
               <Grid
                 item
@@ -155,44 +164,6 @@ const Footer = () => {
                   </Box>
                   {footer3.map((val, ind) => (
                     <NavLink to={val.to} key={ind}>
-                      <Box
-                        key={ind}
-                        sx={{
-                          color: "textLightGray",
-                          letterSpacing: "-0.7px",
-                          cursor: "pointer",
-                          fontSize: "15px",
-                          display: "block",
-                          mb: "10px",
-                          "&:hover": {
-                            textDecoration: "underline",
-                          },
-                        }}
-                      >
-                        {val.lable}
-                      </Box>
-                    </NavLink>
-                  ))}
-                </Box>
-              </Grid>
-              <Grid
-                item
-                lg={3}
-                sm={6}
-                xs={12}
-                sx={{
-                  my: { xs: "30px", lg: "0px" },
-                  justifyContent: { sm: "center" },
-                  display: "flex",
-                }}
-              >
-                <Box>
-                  <Box className="lato" sx={{ fontWeight: "600", mb: "15px" }}>
-                    CONTACT US
-                  </Box>
-                  {footer3.map((val, ind) => (
-                    <NavLink to={val.to} key={ind}>
-                      {" "}
                       <Box
                         key={ind}
                         sx={{
