@@ -4,10 +4,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from '../../../assets/images/header/blacklogo.png'
 
 const Footer = () => {
+
+  const navigate = useNavigate();
 
   const footer1 = [
     { lable: "New Arrivals", to: "/" },
@@ -23,8 +25,8 @@ const Footer = () => {
 
   const footer2 = [
     { lable: "My Account", to: "/my-account" },
-    { lable: "Care & Services", to: "/" },
-    { lable: "FAQ", to: "/" },
+    // { lable: "Care & Services", to: "/" },
+    // { lable: "FAQ", to: "/" },
   ];
 
   const footer3 = [{ lable: "Contact", to: "/contact" }];
@@ -40,7 +42,7 @@ const Footer = () => {
         }}
       >
         <Container maxWidth="xl">
-          <Box sx={{ borderBottom: "1px solid #76767675", pb: "30px" }}>
+          <Box sx={{ }}>
             <Grid container justifyContent="center">
               <Grid
                 className="lato"
@@ -66,8 +68,8 @@ const Footer = () => {
                   display: "flex",
                 }}
               >
-                <Box sx={{ width: '100px', height: '100px', overflow: 'hidden' }}>
-                  <Typography component={'img'} src={logo} sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <Box sx={{ width: '100px', height: '100px', overflow: 'hidden' }} onClick={() => navigate('/')}>
+                  <Typography component={'img'} src={logo} sx={{ width: '100%', height: '100%', objectFit: 'contain', cursor:'pointer' }} />
                 </Box>
               </Grid>
               <Grid
@@ -186,7 +188,7 @@ const Footer = () => {
               </Grid>
             </Grid>
           </Box>
-          <Grid
+          {/* <Grid
             container
             sx={{
               m: "10px 0 30px",
@@ -279,7 +281,7 @@ const Footer = () => {
             sx={{ textAlign: { xs: "center", sm: "start" } }}
           >
             BLISS BOUTIQ (INDIA) Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae?
-          </Box>
+          </Box> */}
         </Container>
       </Box>
     </>

@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import "../../../node_modules/swiper/swiper-bundle.min.css";
 import "../../../node_modules/swiper/swiper-bundle.min.css";
 import img1 from "../../assets/images/Home/Mainslider/img1.jpg";
@@ -89,14 +91,14 @@ const MainSlider = () => {
           sx={{ fontSize: "25px" }}
           onClick={handlePrev}
         >
-          <i className="fa-solid fa-chevron-left icon"></i>
+          <KeyboardArrowLeftIcon sx={{color:'#000'}} />
         </Button>
         <Button
           className="swiper-button-next"
           sx={{ fontSize: "25px" }}
           onClick={handleNext}
         >
-          <i className="fa-solid fa-chevron-right icon"></i>
+          <ChevronRightIcon sx={{color:'#000'}} />
         </Button>
       </Box>
     </>

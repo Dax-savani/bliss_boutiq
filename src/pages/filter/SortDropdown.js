@@ -4,7 +4,7 @@ import SortIcon from '@mui/icons-material/Sort';
 import axiosInstance from '../../Instance';
 import { useNavigate } from 'react-router-dom';
 
-const SortDropdown = () => {
+const SortDropdown = ({updatedCategories}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedOption, setSelectedOption] = useState('Sort');
   const [products, setProducts] = useState([]);
@@ -83,7 +83,7 @@ const SortDropdown = () => {
           key={index}
           onClick={() => {
             handleMenuItemClick(option);
-            navigate(`/product?sort=${option.value}`);
+            navigate(`/product?sort=${option.value}&&categoryId=${updatedCategories.join(",")}`);
           }}
           sx={{
             py: 1,
@@ -96,7 +96,6 @@ const SortDropdown = () => {
         >
           {option.label}
         </MenuItem>
-        
         ))}
       </Menu>
     </div>

@@ -289,11 +289,10 @@ function SingleProduct() {
                                     sx={{
                                         fontSize: "18px",
                                         fontWeight: "700",
-                                        marginTop: "22px",
+                                        my: "22px",
                                     }}
                                 >
-                                    ₹{" "}
-                                    {parseFloat(selectedColorData?.price?.discounted_price).toFixed(2)}
+                                    ₹ {parseFloat(selectedColorData?.price?.discounted_price).toFixed(2)}
                                     <Typography
                                         component="span"
                                         sx={{
@@ -307,7 +306,7 @@ function SingleProduct() {
                                     </Typography>
                                 </Typography>
 
-                                <Box>
+                                {/* <Box>
                                     <Typography className="lato" sx={{
                                         display: "inline-block",
                                         fontSize: "14px",
@@ -319,7 +318,7 @@ function SingleProduct() {
                                     }}>
                                         SLIM FIT
                                     </Typography>
-                                </Box>
+                                </Box> */}
                                 <Box>
                                     <Grid container spacing={1}>
                                     {productData &&

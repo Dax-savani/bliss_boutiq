@@ -5,6 +5,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import WorkHistoryOutlinedIcon from "@mui/icons-material/WorkHistoryOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import {useNavigate} from "react-router-dom";
 import {useRecoilState} from "recoil";
 import {profile} from "../../atoms/authAtoms";
@@ -17,7 +18,7 @@ const Profile = () => {
 
     const mainData = [
         {
-            icon: <i className="fa-regular fa-user"></i>,
+            icon: <PersonOutlineIcon sx={{fontSize: "90px"}}/>,
             title: "MY DATA",
             description: "Personal data, address and payment methods",
             navigate: "my-data",

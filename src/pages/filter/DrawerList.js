@@ -268,11 +268,19 @@ import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import { Checkbox, Grid, Typography, Box, Drawer, Button, List, ListItemButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import axiosInstance from "../../Instance";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate,  useParams,  useSearchParams } from "react-router-dom";
+import useQueryParams from "../../hooks/useQueryParams";
 
-const DrawerList = () => {
+const DrawerList = ({selectedCategories, setSelectedCategories}) => {
+  
+
+  const queryParams = useQueryParams();
+  
+  
+
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
+  
 
   const [categoriesList, setCategoriesList] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -309,7 +317,7 @@ const DrawerList = () => {
   const handleClickColor = () => { setColorList(!colorList) };
 
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
+
 
   const handleCategorySelect = (categoryId) => {
     setSelectedCategories((prevSelected) => {
@@ -321,7 +329,7 @@ const DrawerList = () => {
       }
 
       // Navigate with selected categories in the URL
-      navigate(`/product?categoryId=${updatedCategories.join(",")}`);
+      navigate(`/product?gender=${queryParams.gender ? queryParams.gender : ''}&&categoryId=${updatedCategories.join(",")}`);
       return updatedCategories;
     });
   };
@@ -493,7 +501,7 @@ const DrawerList = () => {
                             justifyContent: "center",
                           }}
                         >
-                          <Box sx={{ height: "14px", width: "14px", backgroundColor: item.hex }} />
+                          <Box sx={{ height: "14px", width: "14px", backgroundColor: item.hex , }} />
                         </Box>
                         <Typography sx={{ fontSize: "15px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                           {item.color}

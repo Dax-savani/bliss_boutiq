@@ -15,7 +15,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../../assets/images/header/Asset 2@4x.png";
 import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -354,7 +355,7 @@ const Header = ({ fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5 }) 
                                     </Box> */}
 
                                     {/* Full Page Search */}
-                                    {isSearchOpen && (
+                                    {/* {isSearchOpen && (
                                         <Box
                                             sx={{
                                                 position: "fixed",
@@ -369,7 +370,6 @@ const Header = ({ fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5 }) 
                                                 overflowY: "auto",
                                             }}
                                         >
-                                            {/* Search Bar */}
                                             <Box
                                                 sx={{
                                                     display: "flex",
@@ -401,22 +401,22 @@ const Header = ({ fullMegamenu2, fullMegamenu3, fullMegamenu4, fullMegamenu5 }) 
                                                 </IconButton>
                                             </Box>
                                         </Box>
-                                    )}
+                                    )} */}
+
                                     <Box
                                         sx={{
                                             marginInline: "15px",
-                                            fontSize: "22px",
                                             cursor: "pointer",
                                         }}
                                         onClick={() => navigate("/cart")}
                                     >
-                                        <i className="fa-solid fa-cart-shopping"></i>
+                                        <ShoppingCartIcon fontSize="medium" />
                                     </Box>
                                     <Box
-                                        sx={{ fontSize: "22px", cursor: "pointer" }}
+                                        sx={{ cursor: "pointer" }}
                                         onClick={handleClick}
                                     >
-                                        <i className="fa-regular fa-user"></i>
+                                        <PersonOutlineIcon fontSize="medium" />
                                     </Box>
                                 </Box>
                                 <Box

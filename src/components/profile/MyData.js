@@ -20,10 +20,7 @@ import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import diamond from "../../assets/images/profile/mydata/diamond.svg";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
-import tShirt from "../../assets/images/profile/mydata/watchlist.webp";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -133,7 +130,7 @@ const MyData = () => {
                 <Box
                     sx={{
                         padding: { xl: "50px 50px", xs: "15px 25px" },
-                        height: "400px",
+                        height: "340px",
                         backgroundColor: theme.palette.liteGrayBack,
                         marginInline: { xl: "50px", md: "20px" },
                     }}
@@ -166,22 +163,13 @@ const MyData = () => {
                             </Typography>
                         )}
                     </Box>
-
-                    <Box
-                        sx={{ mt: "35px", fontSize: "17px", fontWeight: "900", cursor: "pointer" }}
-                        className="lato"
-                        onClick={() => setEdit(true)}
-                    >
-                        <EditIcon sx={{ fontSize: "17px" }} />
-                        EDIT
-                    </Box>
                 </Box>
             </Grid>
             <Grid item xs={12} md={6} mt={{ xs: "50px", md: "0px" }}>
                 <Box
                     sx={{
                         padding: { xl: "30px 50px", xs: "15px 25px" },
-                        height: "400px",
+                        height: "340px",
                         backgroundColor: theme.palette.liteGrayBack,
                         marginInline: { xl: "50px", md: "20px" },
                         display: "flex",
@@ -452,7 +440,7 @@ const MyData = () => {
         { name: "OVERVIEW", icon: null },
         {
             name: "MY DATA",
-            icon: <i class="fa-regular fa-user"></i>,
+            icon: <PersonOutlineIcon />,
             description: "Personal data, address and payment methods",
             onclk: myData,
         },
@@ -485,7 +473,7 @@ const MyData = () => {
     const [rightSide, setRightSide] = useState(myData);
     const [header, setHeader] = useState({
         name: "MY DATA",
-        icon: <i class="fa-regular fa-user"></i>,
+        icon: <PersonOutlineIcon />,
         description: "Personal data, address and payment methods",
     });
 

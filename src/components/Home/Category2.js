@@ -12,6 +12,8 @@ import category2Img6 from "../../assets/images/Home/category2/categoryImg6.png";
 import category2Img7 from "../../assets/images/Home/category2/categoryImg7.png";
 import {useNavigate} from "react-router-dom";
 import axiosInstance from "../../Instance";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 const Category2 = () => {
     const navigate = useNavigate();
@@ -136,13 +138,7 @@ const Category2 = () => {
                                         border: "none",
                                     }}
                                 >
-                                    <i
-                                        className="fa-solid fa-arrow-left-long"
-                                        style={{
-                                            fontSize: "20px",
-                                            color: theme.palette.common.white,
-                                        }}
-                                    ></i>
+                                    <KeyboardArrowLeftIcon sx={{fontSize:'20px', color:'#fff'}}/>
                                 </button>
                                 <button
                                     className="category2-next"
@@ -152,13 +148,7 @@ const Category2 = () => {
                                         border: "none",
                                     }}
                                 >
-                                    <i
-                                        className="fa-solid fa-arrow-right-long"
-                                        style={{
-                                            fontSize: "20px",
-                                            color: theme.palette.common.white,
-                                        }}
-                                    ></i>
+                                  <ChevronRightIcon sx={{fontSize:'20px', color:'#fff'}}/>
                                 </button>
                             </Grid>
                         </Box>

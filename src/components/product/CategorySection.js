@@ -199,12 +199,12 @@
 
 
 
-import React, {useEffect, useState} from "react";
-import {Box, Typography} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
 import axiosInstance from "../../Instance";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const CategorySection = ({onCategorySelect}) => {
+const CategorySection = ({ onCategorySelect }) => {
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubcategories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -269,7 +269,7 @@ const CategorySection = ({onCategorySelect}) => {
     }, [path.search]);
 
     return (
-        <Box sx={{bgcolor: "#f9f9f9", py: 4}}>
+        <Box sx={{ bgcolor: "#f9f9f9", py: 4 }}>
             {
                 subcategories.length ? (
                     <Box
@@ -283,7 +283,7 @@ const CategorySection = ({onCategorySelect}) => {
                         }}
                     >
                         {subcategories &&
-                            subcategories.map((category) => (
+                            subcategories.slice(0, 5).map((category) => (
                                 <Box
                                     key={category._id}
                                     // onClick={() => navigate(`/product?subcategoryId=${category._id}&&gender=${genderId}`)}
@@ -308,8 +308,8 @@ const CategorySection = ({onCategorySelect}) => {
                                         src={category.image}
                                         alt={category.name}
                                         sx={{
-                                            width: {xs: 60, sm: 80},
-                                            height: {xs: 60, sm: 80},
+                                            width: { xs: 60, sm: 80 },
+                                            height: { xs: 60, sm: 80 },
                                             margin: "0 auto",
                                             bgcolor: "#fff",
                                             border: "1px solid #ddd",
@@ -321,7 +321,7 @@ const CategorySection = ({onCategorySelect}) => {
                                         sx={{
                                             mt: 1,
                                             fontWeight: "500",
-                                            fontSize: {xs: "12px", sm: "14px"},
+                                            fontSize: { xs: "12px", sm: "14px" },
                                             color: "#666",
                                         }}
                                     >
@@ -342,7 +342,7 @@ const CategorySection = ({onCategorySelect}) => {
                         }}
                     >
                         {categories &&
-                            categories.map((category) => (
+                            categories.slice(0, 5).map((category) => (
                                 <Box
                                     key={category._id}
                                     onClick={() => navigate(`/product?categoryId=${category._id}&&gender=${genderId}`)}
@@ -360,8 +360,8 @@ const CategorySection = ({onCategorySelect}) => {
                                         src={category.image}
                                         alt={category.name}
                                         sx={{
-                                            width: {xs: 60, sm: 80},
-                                            height: {xs: 60, sm: 80},
+                                            width: { xs: 60, sm: 80 },
+                                            height: { xs: 60, sm: 80 },
                                             margin: "0 auto",
                                             bgcolor: "#fff",
                                             border: "1px solid #ddd",
@@ -373,7 +373,7 @@ const CategorySection = ({onCategorySelect}) => {
                                         sx={{
                                             mt: 1,
                                             fontWeight: "500",
-                                            fontSize: {xs: "12px", sm: "14px"},
+                                            fontSize: { xs: "12px", sm: "14px" },
                                             color: "#666",
                                         }}
                                     >

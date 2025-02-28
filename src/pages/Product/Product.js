@@ -118,6 +118,8 @@ const ProductPage = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
     const handleCategorySelect = (categoryId) => {
         setSelectedCategory(categoryId);
     };
@@ -185,8 +187,8 @@ const ProductPage = () => {
                                     gap: 1,
                                 }}
                             >
-                                <DrawerList/>
-                                <SortDropdown/>
+                                <DrawerList selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories} />
+                                <SortDropdown updatedCategories={selectedCategories}  />
                             </Box>
                         </Box>
                     </Box>
