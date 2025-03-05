@@ -416,7 +416,8 @@ const DrawerList = ({selectedCategories, setSelectedCategories}) => {
                       <Typography
                         onClick={() => {
                           setSelectedSize(item);
-                          if (selectedSize) navigate(`/product?size=${selectedSize}`);
+                          if (selectedSize) navigate(`/product?gender=${queryParams.gender ? queryParams.gender : ''}&&size=${selectedSize}`);
+                          // navigate(`/product?gender=${queryParams.gender ? queryParams.gender : ''}&&categoryId=${updatedCategories.join(",")}`);
                         }}
                         sx={{
                           display: "flex",
@@ -488,7 +489,8 @@ const DrawerList = ({selectedCategories, setSelectedCategories}) => {
                         sx={{ display: "flex", gap: 2, alignItems: "center", mt: 2, cursor: "pointer" }}
                         onClick={() => {
                           setSelectedColor(item.color);
-                          if (selectedColor) navigate(`/product?color=${selectedColor}`);
+                          if (selectedColor) navigate(`/product?gender=${queryParams.gender ? queryParams.gender : ''}&&color=${selectedColor}`);
+                          // navigate(`/product?gender=${queryParams.gender ? queryParams.gender : ''}&&categoryId=${updatedCategories.join(",")}`);
                         }}
                       >
                         <Box

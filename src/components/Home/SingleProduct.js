@@ -124,6 +124,14 @@ function SingleProduct() {
         setQty(event.target.value);
     };
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
+    const handleCategoryClick = (categoryId) => {
+        navigate(`/product?categoryId=${categoryId}`);
+      };
+
     if (!productData) {
         return (
             <Typography>
@@ -218,6 +226,7 @@ function SingleProduct() {
                                                     fontSize: "14px",
                                                     textTransform: "capitalize"
                                                 }}
+                                                onClick={handleGoBack}
                                             >
                                                 {productData?.gender}
                                             </Typography>
@@ -234,6 +243,7 @@ function SingleProduct() {
                                                     borderBottom: "1px solid black",
                                                     fontSize: "14px",
                                                 }}
+                                                onClick={() => handleCategoryClick(productData?.category._id)}
                                             >
                                                 {productData?.category.name}
                                             </Typography>
@@ -243,9 +253,9 @@ function SingleProduct() {
                                         </Box>
                                         <Box>
                                             <Typography
-                                                component="a"
+                                                // component="a"
                                                 sx={{
-                                                    cursor: "pointer",
+                                                    // cursor: "pointer",
                                                     padding: "0px 0px 2px 0px",
                                                     borderBottom: "1px solid black",
                                                     fontSize: "14px",

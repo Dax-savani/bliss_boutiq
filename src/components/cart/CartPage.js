@@ -279,6 +279,7 @@ const CartPage = () => {
                         );
 
                         console.log('jsonResponse', validateResponse.data);
+                        fetchCartItems();
                     } catch (error) {
                         console.error("Validation failed:", error.response?.data || error.message);
                     }
@@ -307,6 +308,7 @@ const CartPage = () => {
             console.error("Payment initiation failed:", error.response?.data || error.message);
         }
     };
+    
 
     return (
         <Box bgcolor={theme.palette.liteGrayBack}>
@@ -662,7 +664,8 @@ const CartPage = () => {
                                 <Typography
                                     sx={{ color: theme.palette.lightBlack, fontSize: "16px" }}
                                 >
-                                    Total (1 Item) inc. VAT
+                                    {/* Total (1 Item) inc. VAT */}
+                                    Total inc. VAT
                                 </Typography>
                                 <Typography>{total}</Typography>
                             </Box>
@@ -690,7 +693,7 @@ const CartPage = () => {
                                 </Button>
                             </Box>
                             <Box sx={{ padding: "20px" }}>
-                                <Grid container spacing={2} sx={{ marginBottom: "20px" }}>
+                                {/* <Grid container spacing={2} sx={{ marginBottom: "20px" }}>
                                     <Grid
                                         item
                                         xs={12}
@@ -710,7 +713,7 @@ const CartPage = () => {
                                             applies.
                                         </Typography>
                                     </Grid>
-                                </Grid>
+                                </Grid> */}
                                 <Divider sx={{ marginBottom: "10px" }} />
                                 <Typography variant="body2" sx={{ marginBottom: "10px" }}>
                                     Accepted Payment Methods

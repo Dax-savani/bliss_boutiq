@@ -32,30 +32,24 @@ const ContactForm = () => {
       salutation: "Mr.",
       firstName: "",
       lastName: "",
-      day: "",
-      month: "",
-      year: "",
+      message: "",
       phoneNumber: "",
       email: "",
-      password: "",
+      // password: "",
     },
 
     validationSchema: Yup.object({
       salutation: Yup.string().required("Required"),
       firstName: Yup.string().required("Required"),
       lastName: Yup.string().required("Required"),
-      day: Yup.number().min(1, "Invalid day").max(31, "Invalid day"),
-      month: Yup.string(),
-      year: Yup.number()
-        .min(1900, "Invalid year")
-        .max(new Date().getFullYear(), "Invalid year"),
+      message: Yup.string().required("Required"),
       phoneNumber: Yup.string()
         .matches(/^\+?\d{10,}$/, "Invalid phone number")
         .required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string()
-        .min(8, "Password must be at least 8 characters")
-        .required("Required"),
+      // password: Yup.string()
+      //   .min(8, "Password must be at least 8 characters")
+      //   .required("Required"),
     }),
 
     onSubmit: async (values, actions) => {
@@ -111,84 +105,6 @@ const ContactForm = () => {
                   />
                 </Grid>
 
-                {/* Date of Birth Fields */}
-                <Grid item xs={12}>
-                  <Typography variant="body1" sx={{ mt: 2, fontWeight: "700" }}>
-                    DATE OF BIRTH (OPTIONAL)
-                  </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                  <FormControl fullWidth>
-                    <InputLabel>Day</InputLabel>
-                    <Select
-                      name="day"
-                      value={formik.values.day}
-                      onChange={formik.handleChange}
-                      error={formik.touched.day && Boolean(formik.errors.day)}
-                    >
-                      {Array.from({ length: 31 }, (_, i) => (
-                        <MenuItem key={i + 1} value={i + 1}>
-                          {i + 1}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={4}>
-                  <FormControl fullWidth>
-                    <InputLabel>Month</InputLabel>
-                    <Select name="month" value={formik.values.month} onChange={formik.handleChange}>
-                      {[
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
-                      ].map((month) => (
-                        <MenuItem key={month} value={month}>
-                          {month}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={4}>
-                  <FormControl fullWidth>
-                    <InputLabel>Year</InputLabel>
-                    <Select
-                      name="year"
-                      value={formik.values.year}
-                      onChange={formik.handleChange}
-                      error={formik.touched.year && Boolean(formik.errors.year)}
-                    >
-                      {Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => (
-                        <MenuItem key={1900 + i} value={1900 + i}>
-                          {1900 + i}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Phone Number *"
-                    name="phoneNumber"
-                    value={formik.values.phoneNumber}
-                    onChange={formik.handleChange}
-                    error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
-                    helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
-                  />
-                </Grid>
-
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
@@ -201,7 +117,33 @@ const ContactForm = () => {
                   />
                 </Grid>
 
+                {/* Phone Fields */}
                 <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Phone Number *"
+                    name="phoneNumber"
+                    value={formik.values.phoneNumber}
+                    onChange={formik.handleChange}
+                    error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
+                    helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+                  />
+                </Grid>
+
+                 {/* Message Fields */}
+                 <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Message *"
+                    name="message"
+                    value={formik.values.message}
+                    onChange={formik.handleChange}
+                    error={formik.touched.message && Boolean(formik.errors.message)}
+                    helperText={formik.touched.message && formik.errors.message}
+                  />
+                </Grid>
+
+                {/* <Grid item xs={12}>
                   <Box sx={{ position: "relative" }}>
                     <TextField
                       fullWidth
@@ -220,7 +162,7 @@ const ContactForm = () => {
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </Box>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
                   <Button

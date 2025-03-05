@@ -505,7 +505,7 @@
 // export default Register_form;
 
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     TextField,
     Button,
@@ -519,12 +519,12 @@ import {
     Typography,
     FormHelperText,
 } from "@mui/material";
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axiosInstance from "../../Instance";
-import toast, {Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const RegisterForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -576,18 +576,30 @@ const RegisterForm = () => {
         },
     });
 
+    // Get yesterday's date and tomorrow's date
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1); // Set to yesterday
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1); // Set to tomorrow
+
+    // Format them to 'yyyy-mm-dd' format for input type="date"
+    const yesterdayDate = yesterday.toISOString().split('T')[0];
+    const tomorrowDate = tomorrow.toISOString().split('T')[0];
+
+
     return (
         <Box>
             <Toaster
                 position="top-center"
                 reverseOrder={false}
             />
-            <Box py={2} sx={{px: {sm: "55px", xs: "20px"}}}>
+            <Box py={2} sx={{ px: { sm: "55px", xs: "20px" } }}>
                 <Typography
                     variant="h4"
                     py={1}
                     mt={3}
-                    sx={{fontSize: {xs: "28px", md: "32px"}, fontWeight: "900"}}
+                    sx={{ fontSize: { xs: "28px", md: "32px" }, fontWeight: "900" }}
                 >
                     CREATE ACCOUNT
                 </Typography>
@@ -640,6 +652,11 @@ const RegisterForm = () => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    inputProps={{
+                                        // Set min date to yesterday's date to disable future dates
+                                        min: '1900-01-01', // You can change this based on your requirement
+                                        max: yesterdayDate, // Disable tomorrow's date
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12} md={6}>
@@ -684,7 +701,7 @@ const RegisterForm = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <Box sx={{position: "relative"}}>
+                                <Box sx={{ position: "relative" }}>
                                     <TextField
                                         fullWidth
                                         label="Password"
@@ -697,9 +714,9 @@ const RegisterForm = () => {
                                     />
                                     <IconButton
                                         onClick={handleClickShowPassword}
-                                        sx={{position: "absolute", right: 10, top: 10}}
+                                        sx={{ position: "absolute", right: 10, top: 10 }}
                                     >
-                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </Box>
                             </Grid>

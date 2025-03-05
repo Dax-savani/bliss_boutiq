@@ -140,13 +140,11 @@ const MyData = () => {
                     </Box>
                     <Box sx={{ my: "15px" }}>
                         <Box mb={"10px"}>{userData?.first_name}</Box>
+                        <Box mb={"10px"}>Number : {userData?.phone_number}</Box>
+                        <Box mb={"10px"}>{userData?.dob ? new Date(userData.dob).toLocaleDateString("en-GB") : "N/A"}</Box>
                         <Box mb={"10px"}>{userData?.email}</Box>
-                        {/*<Box mb={"10px"}>{userData?.phone_number}</Box>*/}
-                        <Box
-                            mb={"10px"}>{userData?.dob ? new Date(userData.dob).toLocaleDateString("en-GB") : "N/A"}</Box>
-                        <Box>Password:********</Box>
+                        <Box mb={"10px"}>Password:********</Box>
                     </Box>
-                    <Box>Customer number : {userData?.phone_number}</Box>
                     <Box sx={{ mt: 2 }}>
                         {userData?.address_details ? (
                             <>
@@ -154,7 +152,17 @@ const MyData = () => {
                                     Address:
                                 </Typography>
                                 <Typography variant="body2">
-                                    {userData.address_details.address_1}, {userData.address_details.address_2}, {userData.address_details.city}, {userData.address_details.state}, {userData.address_details.country}, {userData.address_details.zipcode}
+                                    {/* Conditionally join available address fields */}
+                                    {[
+                                        userData.address_details.address_1,
+                                        userData.address_details.address_2,
+                                        userData.address_details.city,
+                                        userData.address_details.state,
+                                        userData.address_details.country,
+                                        userData.address_details.zipcode
+                                    ]
+                                        .filter(Boolean) // Remove any empty values
+                                        .join(', ') || 'Address not available'}
                                 </Typography>
                             </>
                         ) : (
@@ -162,6 +170,7 @@ const MyData = () => {
                                 Address not available
                             </Typography>
                         )}
+
                     </Box>
                 </Box>
             </Grid>
@@ -187,7 +196,7 @@ const MyData = () => {
                         Congratulations! You are a BLISS BOUTIQ EXPERIENCE member and can
                         benefit from our exclusive services.
                     </Box>
-                    <Box
+                    {/* <Box
                         sx={{
                             mt: "30px",
                             display: "flex",
@@ -199,7 +208,7 @@ const MyData = () => {
                             sx={{ fontSize: { xs: "16px", md: "unset" } }}
                         />
                         Discover more
-                    </Box>
+                    </Box> */}
                 </Box>
             </Grid>
             <Grid xs={12}>
