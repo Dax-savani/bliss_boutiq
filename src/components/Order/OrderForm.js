@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
     Box,
     TextField,
@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import axiosInstance from "../../Instance";
 import toast from "react-hot-toast";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const OrderForm = () => {
     const [formData, setFormData] = useState({
@@ -62,7 +62,7 @@ const OrderForm = () => {
     }, []);
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         if (name in formData.address_details) {
             setFormData((prevState) => ({
                 ...prevState,
@@ -72,7 +72,7 @@ const OrderForm = () => {
                 },
             }));
         } else {
-            setFormData((prevState) => ({...prevState, [name]: value}));
+            setFormData((prevState) => ({ ...prevState, [name]: value }));
         }
     };
 
@@ -109,7 +109,6 @@ const OrderForm = () => {
         }
     };
 
-
     return (
         <Paper
             sx={{
@@ -121,7 +120,7 @@ const OrderForm = () => {
                 mt: 11,
             }}
         >
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" sx={{my:2}}>
                 User Order Form
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -238,19 +237,26 @@ const OrderForm = () => {
                         />
                     </Grid>
                 </Grid>
-                <Box sx={{textAlign: "center", mt: 3}}>
+                <Box sx={{ textAlign: "center", mt: 3 }}>
                     <Button
                         type="submit"
                         variant="contained"
-                        color="primary"
+                        className="lato"
                         sx={{
-                            padding: "10px 20px",
+                            width: { xs: "100%", md: "unset" },
+                            textTransform: "unset",
+                            border: "1px solid black",
+                            padding: "12px 48px",
                             fontSize: "16px",
-                            borderRadius: 4,
-                            bgcolor: "#000",
-                            ":hover": {
-                                bgcolor: "#000",
-                            }
+                            fontWeight: "700",
+                            borderRadius: "0px",
+                            backgroundColor: "#000000",
+                            color: "#fff",
+                            transition: "0.3s",
+                            "&:hover": {
+                                backgroundColor: "#FFFFFF",
+                                color: '#000',
+                            },
                         }}
                     >
                         Update Information

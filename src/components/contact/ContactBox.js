@@ -12,7 +12,7 @@ const ContactBox = () => {
     {
       title: "Email",
       description: "We strive to answer emails within 48 hours",
-      linkText: "Contact us here",
+      linkText: "admin@example.com",
       linkUrl: "#",
     },
     {

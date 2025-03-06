@@ -124,8 +124,8 @@ function SingleProduct() {
         setQty(event.target.value);
     };
 
-    const handleGoBack = () => {
-        navigate(-1);
+    const handleGoBack = (gender) => {
+        navigate(`/product?gender=${gender}`);
     };
 
     const handleCategoryClick = (categoryId) => {
@@ -226,7 +226,7 @@ function SingleProduct() {
                                                     fontSize: "14px",
                                                     textTransform: "capitalize"
                                                 }}
-                                                onClick={handleGoBack}
+                                                onClick={() => handleGoBack(productData?.gender)}
                                             >
                                                 {productData?.gender}
                                             </Typography>

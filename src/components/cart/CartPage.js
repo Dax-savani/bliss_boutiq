@@ -189,6 +189,7 @@ const CartPage = () => {
             if (user.address_details) {
                 setUserAddress(user.address_details);
             }
+            
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
@@ -223,10 +224,10 @@ const CartPage = () => {
     const paymentHandler = async (event) => {
         event.preventDefault();
 
-        if (!userAddress) {
-            navigate('/orderform')
-            return;
-        }
+        if (!userAddress.address_1) {
+        navigate('/orderform')
+        return;
+    }
 
         const orders = cartItems;
         const totalAmount = total;
@@ -248,7 +249,6 @@ const CartPage = () => {
                     headers: { 'Content-Type': 'application/json', 'token': `Bearer ${token}` }
                 }
             );
-            console.log('order', order);
 
             const options = {
                 key: "rzp_test_huqEwaD9wjrEMb",
@@ -335,8 +335,8 @@ const CartPage = () => {
                                     sx={{
                                         textTransform: "unset",
                                         border: "1px solid black",
-                                        padding: "16px 18px",
-                                        fontSize: "16px",
+                                        padding: "14px 16px",
+                                        fontSize: "15px",
                                         fontWeight: "500",
                                         borderRadius: "0px",
                                         color: theme.palette.common.black,
@@ -438,73 +438,81 @@ const CartPage = () => {
 
                                                 {itemId === item._id ? (
                                                     <Box mt={2}>
-                                                        <FormControl sx={{ width: "250px" }}>
-                                                            <InputLabel>Color</InputLabel>
-                                                            <Select
-                                                                value={editItem.color || ""}
-                                                                onChange={handleColorChange}
-                                                                label="Color"
-                                                            >
-                                                                {item.product_id.color_options.map((colorOption) => (
-                                                                    <MenuItem key={colorOption._id}
-                                                                        value={colorOption.color}>
-                                                                        {colorOption.color}
-                                                                    </MenuItem>
-                                                                ))}
-                                                            </Select>
-                                                        </FormControl>
-
-                                                        <FormControl sx={{ width: "250px", ml: 2 }}>
-                                                            <InputLabel>Size</InputLabel>
-                                                            <Select
-                                                                value={editItem.size || ""}
-                                                                onChange={handleSizeChange}
-                                                                disabled={!editItem.color}
-                                                                label="Size"
-                                                            >
-                                                                {item.product_id.color_options
-                                                                    .find((colorOption) => colorOption.color === editItem.color)
-                                                                    ?.size_options.map((sizeOption) => (
-                                                                        <MenuItem key={sizeOption.size}
-                                                                            value={sizeOption.size}>
-                                                                            {sizeOption.size}
+                                                    <Grid container spacing={2}>
+                                                        {/* Color Selection */}
+                                                        <Grid item xs={12} sm={6} md={4}>
+                                                            <FormControl fullWidth>
+                                                                <InputLabel>Color</InputLabel>
+                                                                <Select
+                                                                    value={editItem.color || ""}
+                                                                    onChange={handleColorChange}
+                                                                    label="Color"
+                                                                >
+                                                                    {item.product_id.color_options.map((colorOption) => (
+                                                                        <MenuItem key={colorOption._id} value={colorOption.color}>
+                                                                            {colorOption.color}
                                                                         </MenuItem>
                                                                     ))}
-                                                            </Select>
-                                                        </FormControl>
-
-                                                        <Box display="flex" alignItems="center" mt={2}>
-                                                            <Typography>Quantity: </Typography>
-                                                            <Button
-                                                                onClick={() => handleQuantityChange("decrease")}
-                                                                sx={{
-                                                                    minWidth: "30px",
-                                                                    height: "30px",
-                                                                    margin: "0 8px",
-                                                                    color: "#000",
-                                                                    border: "0.5px solid #000",
-                                                                    borderRadius: 0,
-                                                                }}
-                                                            >
-                                                                -
-                                                            </Button>
-                                                            <Typography>{editItem.qty}</Typography>
-                                                            <Button
-                                                                onClick={() => handleQuantityChange("increase")}
-                                                                sx={{
-                                                                    minWidth: "30px",
-                                                                    height: "30px",
-                                                                    margin: "0 8px",
-                                                                    color: "#000",
-                                                                    border: "0.5px solid #000",
-                                                                    borderRadius: 0,
-                                                                }}
-                                                            >
-                                                                +
-                                                            </Button>
-                                                        </Box>
-
-                                                        <Box mt={3}>
+                                                                </Select>
+                                                            </FormControl>
+                                                        </Grid>
+                                                
+                                                        {/* Size Selection */}
+                                                        <Grid item xs={12} sm={6} md={4}>
+                                                            <FormControl fullWidth disabled={!editItem.color}>
+                                                                <InputLabel>Size</InputLabel>
+                                                                <Select
+                                                                    value={editItem.size || ""}
+                                                                    onChange={handleSizeChange}
+                                                                    label="Size"
+                                                                >
+                                                                    {item.product_id.color_options
+                                                                        .find((colorOption) => colorOption.color === editItem.color)
+                                                                        ?.size_options.map((sizeOption) => (
+                                                                            <MenuItem key={sizeOption.size} value={sizeOption.size}>
+                                                                                {sizeOption.size}
+                                                                            </MenuItem>
+                                                                        ))}
+                                                                </Select>
+                                                            </FormControl>
+                                                        </Grid>
+                                                
+                                                        {/* Quantity Selection */}
+                                                        <Grid item xs={12} sm={6} md={4}>
+                                                            <Box display="flex" alignItems="center">
+                                                                <Typography>Quantity: </Typography>
+                                                                <Button
+                                                                    onClick={() => handleQuantityChange("decrease")}
+                                                                    sx={{
+                                                                        minWidth: "30px",
+                                                                        height: "30px",
+                                                                        margin: "0 8px",
+                                                                        color: "#000",
+                                                                        border: "0.5px solid #000",
+                                                                        borderRadius: 0,
+                                                                    }}
+                                                                >
+                                                                    -
+                                                                </Button>
+                                                                <Typography>{editItem.qty}</Typography>
+                                                                <Button
+                                                                    onClick={() => handleQuantityChange("increase")}
+                                                                    sx={{
+                                                                        minWidth: "30px",
+                                                                        height: "30px",
+                                                                        margin: "0 8px",
+                                                                        color: "#000",
+                                                                        border: "0.5px solid #000",
+                                                                        borderRadius: 0,
+                                                                    }}
+                                                                >
+                                                                    +
+                                                                </Button>
+                                                            </Box>
+                                                        </Grid>
+                                                
+                                                        {/* Save Button */}
+                                                        <Grid item xs={12} display="flex" justifyContent={{ xs: "center", md: "flex-start" }}>
                                                             <Button
                                                                 onClick={handleSaveEdit}
                                                                 sx={{
@@ -523,8 +531,10 @@ const CartPage = () => {
                                                             >
                                                                 Save
                                                             </Button>
-                                                        </Box>
-                                                    </Box>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Box>
+                                                
                                                 ) : (
                                                     <Box>
                                                         <Box mt={2} sx={{ fontSize: "14px", color: "#666666" }}>

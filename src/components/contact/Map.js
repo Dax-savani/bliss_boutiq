@@ -10,15 +10,15 @@ const Map = () => {
   const markers = [
     {
       gecode: [48.86, 2.3522],
-      pop: "hello i am popup 1",
+      pop: "Musée National d'Art Moderne",
     },
     {
       gecode: [48.85, 2.3522],
-      pop: "hello i am popup 2",
+      pop: "Néoldie - Atelier d'encadrement d'art",
     },
     {
       gecode: [48.855, 2.34],
-      pop: "hello i am popup 3",
+      pop: "Tapponnier Steeve",
     },
   ];
 

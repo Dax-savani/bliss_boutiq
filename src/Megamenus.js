@@ -3,18 +3,19 @@ import Header from "./components/global/header/Header";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "./Instance";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Mousewheel, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Loader from "./Loader";
 
 const Megamenus = () => {
   const [categories, setCategories] = useState({ male: [], female: [], kids: [] });
   const [error, setError] = useState(null);
   const [newSubCategory, setNewSubCategory] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   const fetchCategories = async () => {
+    setLoading(true);
     try {
       const res = await axiosInstance.get("/api/category/subcategory/list");
       setNewSubCategory(res.data.data);
@@ -33,6 +34,8 @@ const Megamenus = () => {
     } catch (err) {
       setError("Error fetching categories");
       console.error(err);
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -50,7 +53,9 @@ const Megamenus = () => {
           alignItems: "center",
         }}
       >
-        {newSubCategory.length > 0 ? (
+        {loading ? (
+          <Loader />
+        ) : newSubCategory.length > 0 ? (
           <Grid container spacing={3} justifyContent="center">
             {newSubCategory.map((category) => (
               <Box
@@ -130,7 +135,19 @@ const Megamenus = () => {
   const renderMegamenu = (categoryList, gender) => (
     <Container maxWidth={"xl"}>
       <Grid container columnSpacing={4} justifyContent={"center"} sx={{ py: { sm: "40px", md: "15px" } }}>
-        {categoryList.map((item, index) => (
+        {loading ? (
+          <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "30vh", // Loader only takes half of the screen
+            width: "100%", // Full width
+          }}
+        >
+          <Loader />
+        </Box>
+        ) : categoryList.map((item, index) => (
           <Grid item md={2} xs={12} key={index} sx={{ display: "flex" }}>
             <Box>
               <Typography
